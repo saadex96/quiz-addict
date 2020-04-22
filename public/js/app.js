@@ -1,0 +1,1 @@
+const formNG = document.querySelector('.form-new-game');

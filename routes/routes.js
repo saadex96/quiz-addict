@@ -2,11 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function (req, res) {
-    res.render('index')
+    res.render('index');
 })
 
-router.get('/nouvelle-partie', function (req, res) {
-    res.render('newGame.ejs')
+router.get('/creer-partie', function (req, res) {
+    res.render('new-game.ejs');
 })
 
 module.exports = router;
