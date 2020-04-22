@@ -11,7 +11,12 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 
 io.on('connection', (socket) => {
-    console.log('a user connected');
+    console.log(socket.id)
+    socket.on('create-game', (data) => {
+        console.log(data)
+        socket.join(data);
+        socket.emit('room-created', data)
+    })
 });
 
 http.listen(3000, function () {

@@ -2,13 +2,17 @@
 
 <main>
     <div class="container">
-        <form class="form-new-game">
+        <form action="" method="post" class="form-new-game">
             <h3 class="form-title">Créer une nouvelle partie</h3>
             <input type="text" name="name" placeholder="nom de la partie" class="form-input">
             <input type="password" name="password" placeholder="mot de passe" class="form-input">
-            <input type="button" class="form-input btn" value="Créer">
+            <input type="submit" class="form-input btn" value="Créer">
         </form>
     </div>
 </main>
 
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+</script>
 <%- include('./partials/footer'); -%>
