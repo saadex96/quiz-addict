@@ -1,0 +1,26 @@
+<%- include('./partials/header'); -%>
+
+<main>
+    <div class="container">
+        <form action="" method="post" class="form-new-game">
+            <h3 class="form-title">Créer une nouvelle partie</h3>
+            <input type="text" name="name" placeholder="nom de la partie" class="form-input" autocomplete="off">
+            <input type="password" name="password" placeholder="mot de passe" class="form-input" autocomplete="off">
+            <input type="submit" class="form-input btn" value="Créer">
+        </form>
+        <div class="main-game-container">
+            <h3 class="title-h3 main-game-title"></h3>
+            <div class="loader-container">
+                <p class="loader-status">En attente des joueurs</p>
+                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+</script>
+
+<%- include('./partials/footer'); -%>
