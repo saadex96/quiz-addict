@@ -1,5 +1,5 @@
 body {
-    background-color: #DC7633;
+    background-color: #553AB8;
     font-family: 'Baloo Bhaina 2', cursive;
 }
 
@@ -16,7 +16,7 @@ body {
 .home-link {
     width: 20rem;
     height: 10rem;
-    background-color: #A569BD;
+    background-color: #F77D36;
     margin: 1rem;
     display: flex;
     justify-content: center;
@@ -35,8 +35,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40%;
-    background-color: #A04000;
+    width: 90%;
+    background-color: #F77D36;
     padding: 6rem 0;
     border-radius: 15px;
 }
@@ -50,6 +50,7 @@ body {
     border: none;
     font-size: 1.1rem;
     text-align: center;
+    outline: none;
 }
 
 .form-title {
@@ -58,5 +59,108 @@ body {
 }
 
 .btn {
-    background-color: #28B463;
+    background-color: #32A955;
+}
+
+/* MAIN GAME */
+
+.main-game-container {
+    display: none;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-game-title {
+    color: #FFFFFF;
+    font-size: 3rem;
+    margin-top: 3rem;
+}
+
+/* loader */
+
+.loader-container {
+    margin-top: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-status {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+}
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes lds-ellipsis3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@keyframes lds-ellipsis2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(24px, 0);
+    }
+}
+
+@keyframes lds-grid {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+
+@media (min-width: 1100px) {
+    .form-new-game {
+        width: 50%;
+    }
 }
