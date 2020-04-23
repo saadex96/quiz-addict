@@ -85,7 +85,7 @@ body {
 /* loader */
 
 .loader-container {
-    margin-top: 40%;
+    margin-top: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
