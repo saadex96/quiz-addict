@@ -1,0 +1,22 @@
+<%- include('./partials/header'); -%>
+
+<main>
+    <div class="container">
+        <div class="games-list-container">
+            <h3 class="title-h3">Listes des quiz</h3>
+            <div class="games-list">
+                <ul class="games-list-ul">
+                    <li class="game-li">Damien</li>
+                    <li class="game-li">NewGame</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+</script>
+
+<%- include('./partials/footer'); -%>

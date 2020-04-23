@@ -10,12 +10,15 @@ app.use('/', routes);
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
+let games = []
+
 io.on('connection', (socket) => {
     console.log(socket.id)
     socket.on('create-game', (data) => {
-        console.log(data)
         socket.join(data);
-        socket.emit('room-created', data)
+        games.push(data)
+        console.log(games)
+        socket.emit('room-created', games)
     })
 });
 
