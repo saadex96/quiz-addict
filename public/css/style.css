@@ -1,5 +1,5 @@
 body {
-    background-color: #553AB8;
+    background: linear-gradient(135deg, #2A74FF, #9198e5);
     font-family: 'Baloo Bhaina 2', cursive;
 }
 
@@ -7,10 +7,16 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: 'Baloo Bhaina 2', cursive;
+}
+
+.home-links {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3rem;
 }
 
 .home-link {
