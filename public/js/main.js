@@ -9,10 +9,10 @@ if (formNG) {
     })
 }
 
-socket.on('room-created', (data) => {
+socket.on('room-created', (room) => {
     formNG.style.display = 'none';
     mainGame.style.display = 'flex';
-    titleMG.innerHTML += data;
+    titleMG.innerHTML += room.name;
 })
 
 socket.on('player-join', (name) => {

@@ -14,12 +14,13 @@ socket.on('new-room', (room) => {
 const createLiRoom = (el) => {
     let li = document.createElement("LI");
     li.classList.add('game-li');
-    let text = document.createTextNode(el);
+    let text = document.createTextNode(el.name);
     li.appendChild(text);
-    li.dataset.name = el;
+    li.dataset.name = el.name;
+    li.dataset.id = el.id;
     li.addEventListener('click', () => {
-        console.log(li.getAttribute('data-name'));
-        socket.emit('join-game', li.getAttribute('data-name'))
+        console.log(li.getAttribute('data-id'));
+        socket.emit('join-game', li.getAttribute('data-id'))
     })
     gamesList.appendChild(li);
 }

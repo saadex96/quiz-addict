@@ -4,6 +4,8 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const routes = require('./routes/routes');
 
+const { Room } = require("./utils/game");
+
 app.use(express.static('public'));
 app.use('/', routes);
 
@@ -17,16 +19,20 @@ io.on('connection', (socket) => {
 
     socket.emit('send-rooms', rooms)
 
-    socket.on('create-game', (data) => {
-        socket.join(data);
-        rooms.push(data)
-        console.log(rooms)
-        socket.emit('room-created', data)
-        io.emit('new-room', data)
+    socket.on('create-game', (name) => {
+        let game = new Room(socket.id, name)
+        socket.join(socket.id);
+        rooms.push(game);
+        console.log(rooms);
+        socket.emit('room-created', game);
+        io.emit('new-room', game);
     })
 
-    socket.on('join-game', (name) => {
-        io.to(name).emit('player-join', name);
+    socket.on('join-game', (room) => {
+        let roomToJoin = rooms.find(el => el.id == room );
+        roomToJoin.newPlayer(socket.id);
+        console.log(rooms);
+        io.to(room).emit('player-join', room);
     })
 });
 
