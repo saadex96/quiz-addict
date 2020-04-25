@@ -4,31 +4,63 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const routes = require('./routes/routes');
 
+const { Room } = require("./utils/room");
+
 app.use(express.static('public'));
 app.use('/', routes);
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
-let rooms = []
+let rooms = [];
 
 io.on('connection', (socket) => {
     console.log(socket.id)
 
+    /* Envoyer les rooms au client */
     socket.emit('send-rooms', rooms)
 
-    socket.on('create-game', (data) => {
-        socket.join(data);
-        rooms.push(data)
-        console.log(rooms)
-        socket.emit('room-created', data)
-        io.emit('new-room', data)
+    /* Créer une nouvelle room */
+    socket.on('create-room', (data) => {
+        let room = new Room(socket.id, data.name, data.number)
+        socket.join(room.id);
+        rooms.push(room);
+        console.log(rooms);
+        socket.emit('room-created', room);
+        io.emit('new-room', room);
     })
 
-    socket.on('join-game', (name) => {
-        io.to(name).emit('player-join', name);
+    /* Rejoindre une room */
+    socket.on('join-room', (room) => {
+        let roomToJoin = rooms.find(el => el.id === room );
+        let playersLength = roomToJoin.players.length + 1;
+        let playersNbr = parseInt(roomToJoin.playersNbr);
+        socket.join(roomToJoin.id);
+            if (playersLength <= playersNbr) {
+                roomToJoin.newPlayer(socket.id);
+                io.to(room).emit('player-join', socket.id);
+                if (playersLength === playersNbr) {
+                    deleteRoom(roomToJoin);
+                    io.to(roomToJoin.id).emit('start-game');
+                };
+            }
     })
+
+    /* Gérer les déconnexions */
+    socket.on('disconnect', () => {
+        let room = rooms.find(el => el.id === socket.id);
+        if (room) {
+            deleteRoom(room);
+        }
+    });
 });
+
+const deleteRoom = (room) => {
+    let roomIndex = rooms.indexOf(room);
+    let roomId = room.id;
+    rooms.splice(roomIndex, 1);
+    io.emit('delete-room', roomId);
+}
 
 http.listen(3000, function () {
     console.log('Example app listening on port 3000!');
