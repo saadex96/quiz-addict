@@ -13,6 +13,11 @@ socket.on('new-room', (room) => {
     createLiRoom(room)
 })
 
+socket.on('delete-room', (roomId) => {
+    let roomToDelete = document.querySelector(`[data-id=${roomId}]`);
+    gamesList.removeChild(roomToDelete)
+})
+
 const createLiRoom = (el) => {
     let li = document.createElement("LI");
     li.classList.add('game-li');

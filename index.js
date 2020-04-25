@@ -39,9 +39,11 @@ io.on('connection', (socket) => {
     /* Gérer les déconnexions */
     socket.on('disconnect', () => {
         let room = rooms.find(el => el.id === socket.id);
-        let roomIndex = rooms.indexOf(room);
-        rooms.splice(roomIndex, 1);
-        console.log(rooms)
+        if (room) {
+            let roomIndex = rooms.indexOf(room);
+            rooms.splice(roomIndex, 1);
+            io.emit('delete-room', socket.id)
+        }
     });
 });
 
