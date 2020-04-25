@@ -21,7 +21,7 @@ const createLiRoom = (el) => {
     li.dataset.name = el.name;
     li.dataset.id = el.id;
     li.addEventListener('click', () => {
-        socket.emit('join-game', li.getAttribute('data-id'));
+        socket.emit('join-room', li.getAttribute('data-id'));
         container.removeChild(gamesListCont);
         loader.style.display = 'flex'
     })

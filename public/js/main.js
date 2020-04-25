@@ -6,7 +6,7 @@ const playersConUl = document.querySelector('.players-container-ul')
 if (formNG) {
     formNG.addEventListener('submit', (e) => {
         e.preventDefault();
-        socket.emit('create-game', e.target.name.value);
+        socket.emit('create-room', e.target.name.value);
     })
 }
 

@@ -17,9 +17,11 @@ let rooms = []
 io.on('connection', (socket) => {
     console.log(socket.id)
 
+    /* Envoyer les rooms au client */
     socket.emit('send-rooms', rooms)
 
-    socket.on('create-game', (name) => {
+    /* Créer une nouvelle room */
+    socket.on('create-room', (name) => {
         let game = new Room(socket.id, name)
         socket.join(socket.id);
         rooms.push(game);
@@ -28,12 +30,20 @@ io.on('connection', (socket) => {
         io.emit('new-room', game);
     })
 
-    socket.on('join-game', (room) => {
-        let roomToJoin = rooms.find(el => el.id == room );
+    /* Rejoindre une room */
+    socket.on('join-room', (room) => {
+        let roomToJoin = rooms.find(el => el.id === room );
         roomToJoin.newPlayer(socket.id);
         console.log(rooms);
         io.to(room).emit('player-join', socket.id);
     })
+
+    /* Gérer les déconnexions */
+    socket.on('disconnect', () => {
+        let roomIndex = rooms.findIndex(el => el.id === socket.id);
+        rooms.splice(roomIndex, 1);
+        console.log(rooms);
+    });
 });
 
 http.listen(3000, function () {
