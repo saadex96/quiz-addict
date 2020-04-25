@@ -4,8 +4,9 @@
     <div class="container">
         <form action="" method="post" class="form-new-game">
             <h3 class="form-title">Créer une nouvelle partie</h3>
-            <input type="text" name="name" placeholder="nom de la partie" class="form-input" autocomplete="off">
+            <input type="text" name="name" placeholder="nom de la partie" class="form-input" autocomplete="off" autofocus>
             <input type="password" name="password" placeholder="mot de passe" class="form-input" autocomplete="off">
+            <input type="number" name="number" class="form-input" placeholder="nombre de joueur" autocomplete="off" min="2" max="6">
             <input type="submit" class="form-input btn" value="Créer">
         </form>
         <div class="main-game-container">

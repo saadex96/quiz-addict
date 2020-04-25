@@ -14,8 +14,10 @@ socket.on('new-room', (room) => {
 })
 
 socket.on('delete-room', (roomId) => {
-    let roomToDelete = document.querySelector(`[data-id=${roomId}]`);
-    gamesList.removeChild(roomToDelete)
+    let roomToDelete = document.querySelector(`[data-id='${roomId}']`);
+    if (roomToDelete) {
+        gamesList.removeChild(roomToDelete);
+    }
 })
 
 const createLiRoom = (el) => {
@@ -27,6 +29,7 @@ const createLiRoom = (el) => {
     li.dataset.id = el.id;
     li.addEventListener('click', () => {
         socket.emit('join-room', li.getAttribute('data-id'));
+        console.log(li.getAttribute('data-id'))
         container.removeChild(gamesListCont);
         loader.style.display = 'flex'
     })

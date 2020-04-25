@@ -6,7 +6,13 @@ const playersConUl = document.querySelector('.players-container-ul')
 if (formNG) {
     formNG.addEventListener('submit', (e) => {
         e.preventDefault();
-        socket.emit('create-room', e.target.name.value);
+
+        let room = {};
+        room.name = e.target.name.value;
+        room.number = e.target.number.value;
+        room.password = e.target.password.value;
+
+        socket.emit('create-room', room);
     })
 }
 
