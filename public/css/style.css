@@ -98,6 +98,10 @@ body {
     align-items: center;
 }
 
+.player.loader-container {
+    display: none;
+}
+
 .loader-status {
     color: #FFFFFF;
     font-size: 1.5rem;

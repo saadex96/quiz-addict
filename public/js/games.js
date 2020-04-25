@@ -1,5 +1,7 @@
-const gamesList = document.querySelector('.games-list-ul')
-const gameLi = document.querySelectorAll('.game-li')
+const gamesList = document.querySelector('.games-list-ul');
+const gamesListCont = document.querySelector('.games-list-container');
+const container = document.querySelector('#player-view');
+const loader = document.querySelector('.player.loader-container');
 
 socket.on('send-rooms', (rooms) => {
     rooms.forEach(el => {
@@ -19,7 +21,9 @@ const createLiRoom = (el) => {
     li.dataset.name = el.name;
     li.dataset.id = el.id;
     li.addEventListener('click', () => {
-        socket.emit('join-game', li.getAttribute('data-id'))
+        socket.emit('join-game', li.getAttribute('data-id'));
+        container.removeChild(gamesListCont);
+        loader.style.display = 'flex'
     })
     gamesList.appendChild(li);
 }
