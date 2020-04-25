@@ -91,7 +91,7 @@ body {
 /* loader */
 
 .loader-container {
-    margin-top: 40vh;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -164,6 +164,30 @@ body {
     margin: 0.5rem 0;
     padding: 1rem 1rem;
     width: 50%;
+}
+
+/* Liste des joueurs */
+
+.players-container {
+    width: 75vw;
+    height: 60vh;
+    margin-top: 1rem;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+
+.players-container-ul {
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.player-li {
+    background-color: red;
+    margin: 1rem;
+    width: 10rem;
+    height: 10rem;
 }
 
 @media (min-width: 1100px) {

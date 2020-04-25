@@ -19,7 +19,6 @@ const createLiRoom = (el) => {
     li.dataset.name = el.name;
     li.dataset.id = el.id;
     li.addEventListener('click', () => {
-        console.log(li.getAttribute('data-id'));
         socket.emit('join-game', li.getAttribute('data-id'))
     })
     gamesList.appendChild(li);

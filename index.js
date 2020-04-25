@@ -32,7 +32,7 @@ io.on('connection', (socket) => {
         let roomToJoin = rooms.find(el => el.id == room );
         roomToJoin.newPlayer(socket.id);
         console.log(rooms);
-        io.to(room).emit('player-join', room);
+        io.to(room).emit('player-join', socket.id);
     })
 });
 
