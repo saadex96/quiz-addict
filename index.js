@@ -23,7 +23,7 @@ io.on('connection', (socket) => {
     /* Créer une nouvelle room */
     socket.on('create-room', (data) => {
         let room = new Room(socket.id, data.name, data.number)
-        socket.join(socket.id);
+        socket.join(room.id);
         rooms.push(room);
         console.log(rooms);
         socket.emit('room-created', room);
@@ -34,11 +34,15 @@ io.on('connection', (socket) => {
     socket.on('join-room', (room) => {
         let roomToJoin = rooms.find(el => el.id === room );
         let playersLength = roomToJoin.players.length + 1;
-        let playersNbr = parseInt(roomToJoin.playersNbr)
+        let playersNbr = parseInt(roomToJoin.playersNbr);
+        socket.join(roomToJoin.id);
             if (playersLength <= playersNbr) {
                 roomToJoin.newPlayer(socket.id);
                 io.to(room).emit('player-join', socket.id);
-                if (playersLength === playersNbr) deleteRoom(roomToJoin);
+                if (playersLength === playersNbr) {
+                    deleteRoom(roomToJoin);
+                    io.to(roomToJoin.id).emit('start-game');
+                };
             }
     })
 

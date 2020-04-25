@@ -16,6 +16,10 @@ if (formNG) {
     })
 }
 
+socket.on('start-game', () => {
+    console.log('le jeu démarre')
+})
+
 socket.on('room-created', (room) => {
     formNG.style.display = 'none';
     mainGame.style.display = 'flex';

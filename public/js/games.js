@@ -20,6 +20,10 @@ socket.on('delete-room', (roomId) => {
     }
 })
 
+socket.on('start-game', () => {
+    console.log('le jeu démarre')
+})
+
 const createLiRoom = (el) => {
     let li = document.createElement("LI");
     li.classList.add('game-li');
