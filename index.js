@@ -12,7 +12,7 @@ app.use('/', routes);
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
-let rooms = []
+let rooms = [];
 
 io.on('connection', (socket) => {
     console.log(socket.id)
@@ -25,7 +25,6 @@ io.on('connection', (socket) => {
         let game = new Room(socket.id, name)
         socket.join(socket.id);
         rooms.push(game);
-        console.log(rooms);
         socket.emit('room-created', game);
         io.emit('new-room', game);
     })
@@ -34,15 +33,15 @@ io.on('connection', (socket) => {
     socket.on('join-room', (room) => {
         let roomToJoin = rooms.find(el => el.id === room );
         roomToJoin.newPlayer(socket.id);
-        console.log(rooms);
         io.to(room).emit('player-join', socket.id);
     })
 
     /* Gérer les déconnexions */
     socket.on('disconnect', () => {
-        let roomIndex = rooms.findIndex(el => el.id === socket.id);
+        let room = rooms.find(el => el.id === socket.id);
+        let roomIndex = rooms.indexOf(room);
         rooms.splice(roomIndex, 1);
-        console.log(rooms);
+        console.log(rooms)
     });
 });
 
