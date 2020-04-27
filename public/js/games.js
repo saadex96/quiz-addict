@@ -14,6 +14,11 @@ socket.on('new-room', (room) => {
     createLiRoom(room)
 })
 
+socket.on('new-question', (question) => {
+    console.log('nouvelle question')
+    console.log(question)
+})
+
 socket.on('delete-room', (roomId) => {
     let roomToDelete = document.querySelector(`[data-id='${roomId}']`);
     if (roomToDelete) {

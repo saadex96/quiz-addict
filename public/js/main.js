@@ -4,6 +4,8 @@ const mainGame = document.querySelector('.main-game-container');
 const playersConUl = document.querySelector('.players-container-ul');
 const loader = document.querySelector('.loader-container');
 
+let roomId;
+
 
 if (formNG) {
     formNG.addEventListener('submit', (e) => {
@@ -20,17 +22,19 @@ if (formNG) {
 
 socket.on('players-ready', () => {
     mainGame.removeChild(loader);
-    socket.emit('start-game');
+    socket.emit('start-game', roomId);
 })
 
-socket.on('new-question', () => {
+socket.on('new-question', (question) => {
     console.log('nouvelle question')
+    console.log(question)
 })
 
 socket.on('room-created', (room) => {
     formNG.style.display = 'none';
     mainGame.style.display = 'flex';
     titleMG.innerHTML += room.name;
+    roomId = room.id;
 })
 
 socket.on('player-join', (player) => {

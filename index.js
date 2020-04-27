@@ -3,6 +3,7 @@ const app = express()
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const routes = require('./routes/routes');
+const questions = require('./utils/questions.json')
 
 const { Room } = require("./utils/room");
 
@@ -47,8 +48,9 @@ io.on('connection', (socket) => {
     })
 
     /* Démarrer une partie */
-    socket.on('start-game', () => {
-        socket.emit('new-question')
+    socket.on('start-game', (roomId) => {
+        console.log('room' + roomId);
+        newQuestion(roomId)
     })
 
     /* Gérer les déconnexions */
@@ -59,6 +61,10 @@ io.on('connection', (socket) => {
         }
     });
 });
+
+const newQuestion = (room) => {
+    io.to(room).emit('new-question', questions.quiz[1]);
+}
 
 const deleteRoom = (room) => {
     let roomIndex = rooms.indexOf(room);
