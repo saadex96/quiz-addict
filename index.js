@@ -41,9 +41,14 @@ io.on('connection', (socket) => {
                 io.to(playerData.roomId).emit('player-join', player);
                 if (playersLength === playersNbr) {
                     deleteRoom(roomToJoin);
-                    io.to(roomToJoin.id).emit('start-game');
+                    io.to(roomToJoin.id).emit('players-ready');
                 };
             }
+    })
+
+    /* Démarrer une partie */
+    socket.on('start-game', () => {
+        socket.emit('new-question')
     })
 
     /* Gérer les déconnexions */
