@@ -6,8 +6,10 @@ class Room {
         this.players = [];
     }
 
-    newPlayer = (player) => {
+    newPlayer = (playerId, playerName) => {
+        let player = {id: playerId, name: playerName}
         this.players.push(player);
+        return player;
     }
 }
 

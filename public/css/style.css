@@ -192,6 +192,14 @@ body {
     height: 100%;
 }
 
+/* form join game */
+
+.form-join-game {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
 .player-li {
     background-color: rebeccapurple;
     margin: 1rem;

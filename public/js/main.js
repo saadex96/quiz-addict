@@ -26,10 +26,10 @@ socket.on('room-created', (room) => {
     titleMG.innerHTML += room.name;
 })
 
-socket.on('player-join', (name) => {
+socket.on('player-join', (player) => {
     let li = document.createElement("LI");
     li.classList.add('player-li');
-    let text = document.createTextNode(name);
+    let text = document.createTextNode(player.name);
     li.appendChild(text);
     playersConUl.appendChild(li);
 })
