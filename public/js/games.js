@@ -3,6 +3,7 @@ const gamesListCont = document.querySelector('.games-list-container');
 const container = document.querySelector('#player-view');
 const loader = document.querySelector('.player.loader-container');
 const formJoin = document.querySelector('.form-join-game');
+const playerBoardGame = document.querySelector('.player-board-game');
 
 socket.on('send-rooms', (rooms) => {
     rooms.forEach(el => {
@@ -15,8 +16,8 @@ socket.on('new-room', (room) => {
 })
 
 socket.on('new-question', (question) => {
-    console.log('nouvelle question')
-    console.log(question)
+    container.removeChild(loader);
+    createQuestion(question);
 })
 
 socket.on('delete-room', (roomId) => {
@@ -26,10 +27,28 @@ socket.on('delete-room', (roomId) => {
     }
 })
 
+const createQuestion = (question) => {
+    let div = document.createElement("DIV");
+    let h3 = document.createElement("H3");
+    let questionBody = document.createTextNode(question.question);
+    h3.appendChild(questionBody);
+    div.appendChild(h3);
+    let ul = document.createElement("UL");
+
+    question.options.map(el => {
+        let li = document.createElement("LI");
+        let option = document.createTextNode(el);
+        li.appendChild(option);
+        ul.appendChild(li);
+    })
+
+    div.appendChild(ul);
+    playerBoardGame.appendChild(div);
+}
+
 const createLiRoom = (el) => {
     let li = document.createElement("LI");
     li.classList.add('game-li');
-
     let text = document.createTextNode(el.name);
     let span = document.createElement("SPAN");
     span.appendChild(text);
@@ -50,8 +69,6 @@ const createLiRoom = (el) => {
             container.removeChild(formJoin);
             loader.style.display = 'flex';
         })
-
-
     })
     gamesList.appendChild(li);
 }

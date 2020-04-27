@@ -49,7 +49,6 @@ io.on('connection', (socket) => {
 
     /* Démarrer une partie */
     socket.on('start-game', (roomId) => {
-        console.log('room' + roomId);
         newQuestion(roomId)
     })
 
@@ -63,7 +62,11 @@ io.on('connection', (socket) => {
 });
 
 const newQuestion = (room) => {
-    io.to(room).emit('new-question', questions.quiz[1]);
+    let random = Math.floor(Math.random() * (3 - 1) + 1);
+    io.to(room).emit('new-question', {
+        question: questions.quiz[random].question,
+        options: questions.quiz[random].options
+    });
 }
 
 const deleteRoom = (room) => {
