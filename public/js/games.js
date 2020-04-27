@@ -4,11 +4,14 @@ const container = document.querySelector('#player-view');
 const loader = document.querySelector('.player.loader-container');
 const formJoin = document.querySelector('.form-join-game');
 const playerBoardGame = document.querySelector('.player-board-game');
+const options = document.querySelectorAll('.player-board-game .option');
 
 socket.on('send-rooms', (rooms) => {
-    rooms.forEach(el => {
-        createLiRoom(el)
-    })
+    if (rooms != undefined) {
+        rooms.forEach(el => {
+            createLiRoom(el)
+        })
+    }
 })
 
 socket.on('new-room', (room) => {
@@ -17,7 +20,7 @@ socket.on('new-room', (room) => {
 
 socket.on('new-question', (question) => {
     container.removeChild(loader);
-    createQuestion(question, playerBoardGame);
+    createQuestion(question, playerBoardGame, true);
 })
 
 socket.on('delete-room', (roomId) => {
