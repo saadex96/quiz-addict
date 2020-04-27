@@ -16,17 +16,15 @@ app.set('view engine', 'ejs');
 let rooms = [];
 
 io.on('connection', (socket) => {
-    console.log(socket.id)
 
     /* Envoyer les rooms au client */
-    socket.emit('send-rooms', rooms)
+    socket.emit('send-rooms', rooms.find(el => el.isFull === false ))
 
     /* Créer une nouvelle room */
     socket.on('create-room', (data) => {
         let room = new Room(socket.id, data.name, data.number)
         socket.join(room.id);
         rooms.push(room);
-        console.log(rooms);
         socket.emit('room-created', room);
         io.emit('new-room', room);
     })
@@ -41,7 +39,8 @@ io.on('connection', (socket) => {
                 let player = roomToJoin.newPlayer(socket.id, playerData.name);
                 io.to(playerData.roomId).emit('player-join', player);
                 if (playersLength === playersNbr) {
-                    deleteRoom(roomToJoin);
+                    io.emit('delete-room', roomToJoin.id);
+                    roomToJoin.isFull = true;
                     io.to(roomToJoin.id).emit('players-ready');
                 };
             }
@@ -49,7 +48,15 @@ io.on('connection', (socket) => {
 
     /* Démarrer une partie */
     socket.on('start-game', (roomId) => {
-        newQuestion(roomId)
+        newQuestion(roomId);
+    })
+
+    /* Vérifier les réponses */
+    socket.on('check-answer', (playerData) => {
+        let correctAnswer = rooms.find(el => el.id === playerData.roomId ).currentAnswer;
+        if (playerData.answer === correctAnswer) {
+            console.log(true)
+        }
     })
 
     /* Gérer les déconnexions */
@@ -62,11 +69,15 @@ io.on('connection', (socket) => {
 });
 
 const newQuestion = (room) => {
+    let currentRoom = rooms.find(el => el.id === room );
     let random = Math.floor(Math.random() * (3 - 1) + 1);
     io.to(room).emit('new-question', {
         question: questions.quiz[random].question,
-        options: questions.quiz[random].options
+        options: questions.quiz[random].options,
+        roomId: room
     });
+    currentRoom.newQuestion(questions.quiz[random]);
+    console.log(currentRoom)
 }
 
 const deleteRoom = (room) => {

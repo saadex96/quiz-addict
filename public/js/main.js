@@ -3,6 +3,7 @@ const titleMG = document.querySelector('.main-game-title');
 const mainGame = document.querySelector('.main-game-container');
 const playersConUl = document.querySelector('.players-container-ul');
 const loader = document.querySelector('.loader-container');
+const quizContainer = document.querySelector('.quiz-container')
 
 let roomId;
 
@@ -26,7 +27,7 @@ socket.on('players-ready', () => {
 })
 
 socket.on('new-question', (question) => {
-    createQuestion(question, mainGame);
+    createQuestion(question, quizContainer, false);
 })
 
 socket.on('room-created', (room) => {
