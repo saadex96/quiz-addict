@@ -26,8 +26,7 @@ socket.on('players-ready', () => {
 })
 
 socket.on('new-question', (question) => {
-    console.log('nouvelle question')
-    console.log(question)
+    createQuestion(question, mainGame);
 })
 
 socket.on('room-created', (room) => {
