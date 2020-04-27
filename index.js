@@ -31,19 +31,24 @@ io.on('connection', (socket) => {
     })
 
     /* Rejoindre une room */
-    socket.on('join-room', (room) => {
-        let roomToJoin = rooms.find(el => el.id === room );
+    socket.on('join-room', (playerData) => {
+        let roomToJoin = rooms.find(el => el.id === playerData.roomId );
         let playersLength = roomToJoin.players.length + 1;
         let playersNbr = parseInt(roomToJoin.playersNbr);
         socket.join(roomToJoin.id);
             if (playersLength <= playersNbr) {
-                roomToJoin.newPlayer(socket.id);
-                io.to(room).emit('player-join', socket.id);
+                let player = roomToJoin.newPlayer(socket.id, playerData.name);
+                io.to(playerData.roomId).emit('player-join', player);
                 if (playersLength === playersNbr) {
                     deleteRoom(roomToJoin);
-                    io.to(roomToJoin.id).emit('start-game');
+                    io.to(roomToJoin.id).emit('players-ready');
                 };
             }
+    })
+
+    /* Démarrer une partie */
+    socket.on('start-game', () => {
+        socket.emit('new-question')
     })
 
     /* Gérer les déconnexions */
