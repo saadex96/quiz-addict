@@ -18,7 +18,7 @@ let rooms = [];
 io.on('connection', (socket) => {
 
     /* Envoyer les rooms au client */
-    socket.emit('send-rooms', rooms.find(el => el.isFull === false ))
+    socket.emit('send-rooms', rooms.filter(el => el.isFull === false))
 
     /* Créer une nouvelle room */
     socket.on('create-room', (data) => {
