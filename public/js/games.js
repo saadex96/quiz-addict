@@ -18,8 +18,11 @@ socket.on('new-room', (room) => {
     createLiRoom(room)
 })
 
-socket.on('new-question', (question) => {
+socket.on('players-ready', () => {
     container.removeChild(loader);
+})
+
+socket.on('new-question', (question) => {
     createQuestion(question, playerBoardGame, true);
 })
 

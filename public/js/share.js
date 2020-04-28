@@ -1,4 +1,10 @@
 const createQuestion = (question, boardGame, status) => {
+    let questionCont = document.querySelector('.question-container')
+
+    if (questionCont != null) {
+        boardGame.removeChild(questionCont)
+    }
+
     let div = document.createElement("DIV");
     div.classList.add('question-container');
     let h3 = document.createElement("H3");
