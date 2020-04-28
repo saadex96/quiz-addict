@@ -26,6 +26,10 @@ socket.on('new-question', (question) => {
     createQuestion(question, playerBoardGame, true);
 })
 
+socket.on('update-game', (players) => {
+    playerBoardGame.removeChild(document.querySelector('.question-container'));
+})
+
 socket.on('delete-room', (roomId) => {
     let roomToDelete = document.querySelector(`[data-id='${roomId}']`);
     if (roomToDelete) {

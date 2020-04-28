@@ -18,6 +18,7 @@ const createQuestion = (question, boardGame, status) => {
     question.options.map(el => {
         let li = document.createElement("LI");
         li.classList.add('option');
+        li.dataset.answer = el;
         let option = document.createTextNode(el);
         li.appendChild(option);
         ul.appendChild(li);

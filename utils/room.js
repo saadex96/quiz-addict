@@ -26,13 +26,14 @@ class Room {
 
         let random = Math.floor(Math.random() * (3 - 1) + 1);
         let question = questions.quiz[random];
+        this.questions.push(question);
+        this.currentAnswer = question.answer;
+
         io.to(room.id).emit('new-question', {
             question: questions.quiz[random].question,
             options: questions.quiz[random].options,
             roomId: room.id
         });
-        this.questions.push(question);
-        this.currentAnswer = question.answer;
     }
 
     checkResponse = (answer, socketId) => {
@@ -52,9 +53,9 @@ class Room {
         }
     }
 
-    allPlayersResponded = (room, io) => {
+    allPlayersResponded = () => {
         if (this.responseNumber === this.players.length) {
-            this.newQuestion(room, io)
+            return true;
         }
     }
 }
