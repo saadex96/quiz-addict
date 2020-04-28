@@ -3,7 +3,6 @@ const app = express()
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const routes = require('./routes/routes');
-const questions = require('./utils/questions.json')
 
 const { Room } = require("./utils/room");
 
@@ -48,15 +47,15 @@ io.on('connection', (socket) => {
 
     /* Démarrer une partie */
     socket.on('start-game', (roomId) => {
-        newQuestion(roomId);
+        let currentRoom = rooms.find(el => el.id === roomId );
+        currentRoom.newQuestion(currentRoom, io);
     })
 
     /* Vérifier les réponses */
     socket.on('check-answer', (playerData) => {
-        let correctAnswer = rooms.find(el => el.id === playerData.roomId ).currentAnswer;
-        if (playerData.answer === correctAnswer) {
-            console.log(true)
-        }
+        let room = rooms.find(el => el.id === playerData.roomId );
+        room.checkResponse(playerData.answer, socket.id);
+        room.allPlayersResponded(room, io);
     })
 
     /* Gérer les déconnexions */
@@ -67,18 +66,6 @@ io.on('connection', (socket) => {
         }
     });
 });
-
-const newQuestion = (room) => {
-    let currentRoom = rooms.find(el => el.id === room );
-    let random = Math.floor(Math.random() * (3 - 1) + 1);
-    io.to(room).emit('new-question', {
-        question: questions.quiz[random].question,
-        options: questions.quiz[random].options,
-        roomId: room
-    });
-    currentRoom.newQuestion(questions.quiz[random]);
-    console.log(currentRoom)
-}
 
 const deleteRoom = (room) => {
     let roomIndex = rooms.indexOf(room);

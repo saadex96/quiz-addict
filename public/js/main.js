@@ -41,6 +41,8 @@ socket.on('player-join', (player) => {
     let li = document.createElement("LI");
     li.classList.add('player-li');
     let text = document.createTextNode(player.name);
+    let score = document.createTextNode(player.score);
     li.appendChild(text);
+    li.appendChild(score);
     playersConUl.appendChild(li);
 })
