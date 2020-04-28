@@ -7,7 +7,7 @@ class Room {
         this.playersNbr = nbr;
         this.players = [];
         this.questions = [];
-        this.currentAnswer;
+        this.currentAnswer = null;
         this.isFull = false;
         this.responseNumber = 0;
     }
@@ -15,12 +15,14 @@ class Room {
     newPlayer = (playerId, playerName) => {
         let player = {id: playerId, name: playerName, currentResponse: '', score: 0, isRight: null}
         this.players.push(player);
-        console.log(this.players)
         return player;
     }
 
     newQuestion = (room, io) => {
-        this.players.map(el => el.currentResponse = '')
+        this.players.map(el => {
+            el.currentResponse = null
+        })
+        this.responseNumber = 0;
 
         let random = Math.floor(Math.random() * (3 - 1) + 1);
         let question = questions.quiz[random];
@@ -35,7 +37,7 @@ class Room {
 
     checkResponse = (answer, socketId) => {
         let player = this.players.find(el => el.id === socketId);
-        if (player.currentResponse === '') {
+        if (player.currentResponse === null) {
             player.currentResponse = answer;
             this.responseNumber ++;
         } else {
