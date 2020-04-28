@@ -8,7 +8,7 @@ const options = document.querySelectorAll('.player-board-game .option');
 
 socket.on('send-rooms', (rooms) => {
     if (rooms != undefined) {
-        rooms.forEach(el => {
+        rooms.map(el => {
             createLiRoom(el)
         })
     }
