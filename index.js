@@ -55,7 +55,10 @@ io.on('connection', (socket) => {
     socket.on('check-answer', (playerData) => {
         let room = rooms.find(el => el.id === playerData.roomId );
         room.checkResponse(playerData.answer, socket.id);
-        room.allPlayersResponded(room, io);
+        if (room.allPlayersResponded()) {
+            io.to(room.id).emit('update-game', {players: room.players, correctAnswer: room.currentAnswer});
+            setTimeout(() => room.newQuestion(room, io), 6000);
+        };
     })
 
     /* Gérer les déconnexions */

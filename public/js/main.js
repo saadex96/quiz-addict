@@ -7,7 +7,6 @@ const quizContainer = document.querySelector('.quiz-container')
 
 let roomId;
 
-
 if (formNG) {
     formNG.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -21,15 +20,6 @@ if (formNG) {
     })
 }
 
-socket.on('players-ready', () => {
-    mainGame.removeChild(loader);
-    socket.emit('start-game', roomId);
-})
-
-socket.on('new-question', (question) => {
-    createQuestion(question, quizContainer, false);
-})
-
 socket.on('room-created', (room) => {
     formNG.style.display = 'none';
     mainGame.style.display = 'flex';
@@ -40,9 +30,41 @@ socket.on('room-created', (room) => {
 socket.on('player-join', (player) => {
     let li = document.createElement("LI");
     li.classList.add('player-li');
+    li.dataset.playerId = player.id;
+    let span = document.createElement('SPAN');
+    let spanScore = document.createElement('SPAN');
+    spanScore.classList.add('player-score');
     let text = document.createTextNode(player.name);
     let score = document.createTextNode(player.score);
-    li.appendChild(text);
-    li.appendChild(score);
+    span.appendChild(text);
+    spanScore.appendChild(score);
+    li.appendChild(span);
+    li.appendChild(spanScore);
     playersConUl.appendChild(li);
 })
+
+socket.on('players-ready', () => {
+    mainGame.removeChild(loader);
+    socket.emit('start-game', roomId);
+})
+
+socket.on('new-question', (question) => {
+    createQuestion(question, quizContainer, false);
+})
+
+socket.on('update-game', (updatedGame) => {
+        setTimeout(() => {
+            let answer = document.querySelector(`[data-answer='${updatedGame.correctAnswer}']`);
+            answer.classList.add('correct-option');
+            updatePlayers(updatedGame.players);
+        }, 1300)
+
+})
+
+const updatePlayers = (players) => {
+    players.map(player => {
+        let score = document.querySelector(`[data-player-id='${player.id}'] .player-score`);
+        console.log(score)
+        score.textContent = player.score;
+    })
+}
