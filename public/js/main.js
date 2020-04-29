@@ -24,6 +24,7 @@ if (formNG) {
                 roomId = data.room.id;
             } else {
                 console.log(data.msg)
+                handleErrors(data.msg, formNG);
             }
         });
     })
@@ -50,7 +51,7 @@ socket.on('players-ready', () => {
         if (data.code === 'ok') {
             mainGame.removeChild(loader);
         } else {
-            console.log(data.msg)
+            handleErrors(data.msg, mainGame);
         }
     });
 })
