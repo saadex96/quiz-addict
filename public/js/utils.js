@@ -24,7 +24,11 @@ const createQuestion = (question, boardGame, status) => {
         ul.appendChild(li);
         if (status) {
             li.addEventListener('click', () => {
-                socket.emit('check-answer', {answer: el, roomId: question.roomId})
+                socket.emit('check-answer', {answer: el, roomId: question.roomId}, (data) => {
+                    if (data.code === 'error') {
+                        console.log(data.msg)
+                    }
+                })
             })
         }
     })
