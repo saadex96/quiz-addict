@@ -26,7 +26,7 @@ const createQuestion = (question, boardGame, status) => {
             li.addEventListener('click', () => {
                 socket.emit('check-answer', {answer: el, roomId: question.roomId}, (data) => {
                     if (data.code === 'error') {
-                        console.log(data.msg)
+                        handleErrors(data.msg, boardGame);
                     }
                 })
             })
@@ -34,4 +34,21 @@ const createQuestion = (question, boardGame, status) => {
     })
     div.appendChild(ul);
     boardGame.appendChild(div);
+}
+
+const handleErrors = (error, container) => {
+    removeErrors();
+    let div = document.createElement('DIV');
+    div.classList.add('errors-container');
+    let text = document.createTextNode(error);
+    div.appendChild(text);
+    container.appendChild(div);
+}
+
+const removeErrors = () => {
+    let errorsCont = document.querySelector('.errors-container');
+    let errorsContChild = document.querySelector('.errors-container > *');
+    if (errorsCont) {
+        errorsCont.remove(errorsContChild);
+    }
 }

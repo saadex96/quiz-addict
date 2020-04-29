@@ -61,7 +61,7 @@ const createLiRoom = (el) => {
                     container.removeChild(formJoin);
                     loader.style.display = 'flex';
                 } else {
-                    console.log(data.msg)
+                    handleErrors(data.msg, formJoin);
                 }
             });
         })
