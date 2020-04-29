@@ -1,43 +1,40 @@
 body {
-    background: linear-gradient(135deg, #2A74FF, #9198e5);
     font-family: 'Baloo Bhaina 2', cursive;
 }
 
-.container {
-    width: 100vw;
-    height: 100vh;
+/* Main */
+
+.main-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Baloo Bhaina 2', cursive;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100vw !important;
+}
+
+/* Header */
+.header {
+    width: 100%;
+}
+
+/* Home */
+
+.home-container {
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    font-family: 'Baloo Bhaina 2', cursive;
+    margin: 0 2rem 0 2rem !important;
+    padding: 0 !important;
+    max-width: 90vw !important;
 }
 
-.home-links {
+.col {
     display: flex;
-    flex-direction: row;
-    margin-top: 3rem;
-}
-
-.home-link {
-    width: 20rem;
-    height: 10rem;
-    background-color: #F77D36;
-    margin: 1rem;
-    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    border-radius: 15px;
-    text-decoration: none;
-    color: #FFFFFF;
-    font-size: 2rem;
-    text-align: center;
-    padding: 1rem;
-    font-family: 'Baloo Bhaina 2', cursive;
-}
-
-.link.join {
-    background-color: #E31D65;
 }
 
 .form-new-game {

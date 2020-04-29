@@ -4,7 +4,6 @@ const container = document.querySelector('#player-view');
 const loader = document.querySelector('.player.loader-container');
 const formJoin = document.querySelector('.form-join-game');
 const playerBoardGame = document.querySelector('.player-board-game');
-const options = document.querySelectorAll('.player-board-game .option');
 
 socket.on('send-rooms', (rooms) => {
     if (rooms != undefined) {
