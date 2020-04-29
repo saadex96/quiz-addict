@@ -26,7 +26,7 @@ socket.on('new-question', (question) => {
     createQuestion(question, playerBoardGame, true);
 })
 
-socket.on('update-game', (players) => {
+socket.on('update-game', () => {
     playerBoardGame.removeChild(document.querySelector('.question-container'));
 })
 
@@ -56,9 +56,14 @@ const createLiRoom = (el) => {
                 password: e.target.password.value,
                 roomId: li.getAttribute('data-id')
             };
-            socket.emit('join-room', player);
-            container.removeChild(formJoin);
-            loader.style.display = 'flex';
+            socket.emit('join-room', player, (data) => {
+                if (data.code === 'ok') {
+                    container.removeChild(formJoin);
+                    loader.style.display = 'flex';
+                } else {
+                    console.log(data.msg)
+                }
+            });
         })
     })
     gamesList.appendChild(li);

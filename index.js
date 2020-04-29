@@ -1,13 +1,16 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const routes = require('./routes/routes');
-
+const helmet = require('helmet');
 const { Room } = require("./utils/room");
 
 app.use(express.static('public'));
 app.use('/', routes);
+app.use(helmet());
+
+app.disable('x-powered-by');
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
@@ -20,45 +23,75 @@ io.on('connection', (socket) => {
     socket.emit('send-rooms', rooms.filter(el => el.isFull === false))
 
     /* Créer une nouvelle room */
-    socket.on('create-room', (data) => {
-        let room = new Room(socket.id, data.name, data.number)
-        socket.join(room.id);
-        rooms.push(room);
-        socket.emit('room-created', room);
-        io.emit('new-room', room);
+    socket.on('create-room', (data, callback) => {
+        // TODO Password
+        if (data.number >= 2 && data.number<= 6) {
+            if(data.name.length >= 3 && data.name.length <= 35) {
+                let room = new Room(socket.id, data.name, data.number);
+                socket.join(room.id);
+                rooms.push(room);
+                io.emit('new-room', room);
+                callback({code: 'ok', msg: "room-created", room: room});
+            } else {
+                callback({code: 'error', msg: 'Le nom est doit être supérieur à 3 caractères et inférieur à 35 caractères'});
+            }
+        } else {
+            callback({code: 'error', msg: 'Le nombre de joueurs doit être supérieur à 2 et inférieur à 6'});
+        }
+
     })
 
     /* Rejoindre une room */
-    socket.on('join-room', (playerData) => {
+    socket.on('join-room', (playerData, callback) => {
+        // A faire les else
         let roomToJoin = rooms.find(el => el.id === playerData.roomId );
         let playersLength = roomToJoin.players.length + 1;
         let playersNbr = parseInt(roomToJoin.playersNbr);
         socket.join(roomToJoin.id);
             if (playersLength <= playersNbr) {
-                let player = roomToJoin.newPlayer(socket.id, playerData.name);
-                io.to(playerData.roomId).emit('player-join', player);
-                if (playersLength === playersNbr) {
-                    io.emit('delete-room', roomToJoin.id);
-                    roomToJoin.isFull = true;
-                    io.to(roomToJoin.id).emit('players-ready');
-                };
+                if (playerData.name.length >= 2 && playerData.name.length <= 20) {
+                    let player = roomToJoin.newPlayer(socket.id, playerData.name);
+                    io.to(playerData.roomId).emit('player-join', player);
+                    callback({code: 'ok', msg: 'Room disponible'});
+                    if (playersLength === playersNbr) {
+                        io.emit('delete-room', roomToJoin.id);
+                        roomToJoin.isFull = true;
+                        io.to(roomToJoin.id).emit('players-ready');
+                    }
+                } else {
+                    callback({code: 'error', msg: 'Le nom est doit être supérieur à 2 caractères et inférieur à 20 caractères'});
+                }
+            } else {
+                callback({code: 'error', msg: 'Room non disponible'});
             }
     })
 
     /* Démarrer une partie */
-    socket.on('start-game', (roomId) => {
+    socket.on('start-game', (roomId, callback) => {
         let currentRoom = rooms.find(el => el.id === roomId );
-        currentRoom.newQuestion(currentRoom, io);
+        if (currentRoom) {
+            callback({code: 'ok', msg: 'game-started'})
+            setTimeout(() => {
+                currentRoom.newQuestion(currentRoom, io);
+            }, 5000)
+        } else {
+            callback({code: 'error', msg: 'la room n\'existe pas'})
+        }
     })
 
     /* Vérifier les réponses */
-    socket.on('check-answer', (playerData) => {
+    socket.on('check-answer', (playerData, callback) => {
         let room = rooms.find(el => el.id === playerData.roomId );
-        room.checkResponse(playerData.answer, socket.id);
-        if (room.allPlayersResponded()) {
-            io.to(room.id).emit('update-game', {players: room.players, correctAnswer: room.currentAnswer});
-            setTimeout(() => room.newQuestion(room, io), 6000);
-        };
+        if (room) {
+            room.checkResponse(playerData.answer, socket.id);
+            if (room.allPlayersResponded()) {
+                io.to(room.id).emit('update-game', {players: room.players, correctAnswer: room.currentAnswer});
+                setTimeout(() => room.newQuestion(room, io), 6000);
+            }
+        } else {
+            callback({code: 'error', msg: 'La room n\'existe pas'});
+        }
+
     })
 
     /* Gérer les déconnexions */
