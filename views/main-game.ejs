@@ -1,28 +1,38 @@
 <%- include('./partials/header'); -%>
 
-<main>
-    <div class="container">
-        <form action="" method="post" class="form-new-game">
-            <h3 class="form-title">Créer une nouvelle partie</h3>
-            <input type="text" name="name" placeholder="nom de la partie" class="form-input" autocomplete="off" autofocus>
-            <input type="password" name="password" placeholder="mot de passe" class="form-input" autocomplete="off">
-            <input type="number" name="number" class="form-input" placeholder="nombre de joueur" autocomplete="off" min="2" max="6" value="2">
-            <input type="submit" class="form-input btn" value="Créer">
-        </form>
-        <div class="main-game-container">
-            <h3 class="title-h3 main-game-title"></h3>
-            <div class="players-container">
-                <ul class="players-container-ul">
+<main class="container">
+    <form action="" method="post" class="form-new-game">
+        <fieldset>
+            <legend>Créer une nouvelle partie</legend>
+            <div class="form-group">
+                <label for="name">Nom de la partie</label>
+                <input type="text" id="name" name="name" placeholder="nom de la partie" class="form-control form-input" autocomplete="off" autofocus>
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="password" placeholder="mot de passe" class="form-control form-input" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="number">Mot de passe</label>
+                <input type="number" name="number" id="number" class="form-control form-input" placeholder="nombre de joueur" autocomplete="off" min="2" max="6" value="2">
+                <small id="emailHelp" class="form-text text-muted">De 2 à 6 joueurs !</small>
+            </div>
+            <input type="submit" class="form-input btn-success btn" value="Créer">
+        </fieldset>
+    </form>
+    <div class="main-game-container">
+        <h3 class="title-h3 main-game-title"></h3>
+        <div class="players-container">
+            <ul class="players-container-ul">
 
-                </ul>
-            </div>
-            <div class="quiz-container">
+            </ul>
+        </div>
+        <div class="quiz-container">
 
-            </div>
-            <div class="loader-container">
-                <p class="loader-status">En attente des joueurs</p>
-                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-            </div>
+        </div>
+        <div class="loader-container">
+            <p class="loader-status">En attente des joueurs</p>
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
         </div>
     </div>
 </main>

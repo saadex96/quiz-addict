@@ -19,6 +19,10 @@ body {
     width: 100%;
 }
 
+.header nav {
+    background-color: #222222 !important;
+}
+
 /* HOME */
 
 .home-container {
@@ -51,7 +55,7 @@ body {
 }
 
 .home-img-desk {
-    background-image: linear-gradient(rgba(55, 90, 127, 0.2), rgba(69, 69, 69, 0.2)), url('../images/home-bg.png');
+    background-image: linear-gradient(rgba(55, 90, 127, 0.5), rgba(69, 69, 69, 0.5)), url('../images/home-bg.png');
     background-position: center;
     background-size: cover;
     border-radius: 5px;
@@ -75,35 +79,11 @@ body {
 .footer {
     width: 100%;
     height: calc(100vh - (80vh + 70px));
-    background-color: #444444;
+    background-color: #222222;
 }
 
+/* CREATE GAME */
 
-
-
-
-.form-new-game {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    background-color: #F77D36;
-    padding: 6rem 0;
-    border-radius: 15px;
-}
-
-.form-input {
-    width: 80%;
-    min-width: 15rem;
-    margin: 0.5rem;
-    padding: 1rem;
-    border-radius: 15px;
-    border: none;
-    font-size: 1.1rem;
-    text-align: center;
-    outline: none;
-}
 
 .form-title {
     font-size: 2rem;
@@ -315,6 +295,7 @@ body {
 
     .home-img-mob {
         background-image: none;
+        background: linear-gradient(rgba(55, 90, 127, 0.5), rgba(69, 69, 69, 0.5));
     }
 }
 
