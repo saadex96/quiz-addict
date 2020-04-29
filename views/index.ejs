@@ -1,14 +1,21 @@
 
 <%- include('./partials/header'); -%>
 
-<main>
-    <div class="container">
-        <h3 class="title-h3">Défiez vos amis dans des quiz fun</h3>
-        <div class="home-links">
-            <a href="/main-game" class="link home-link">Créer une nouvelle partie</a>
-            <a href="/join-game" class="link home-link join">Rejoindre une partie</a>
+<main class="container home-container">
+    <div class="row">
+        <div class="col col-sm-6 home-img-mob">
+            <h3 class="title-h3">Viens défier tes amis sur plus de 1000 questions fun !</h3>
+            <div class="d-flex flex-row bd-highlight mb-3 btn-container">
+                <a href="/main-game" class="btn btn-warning">Créer une nouvelle partie</a>
+                <a href="/join-game" class="btn btn-info">Rejoindre une partie</a>
+            </div>
+        </div>
+        <div class="col col-sm-6 home-img-desk">
         </div>
     </div>
 </main>
+<footer class="footer home-footer">
+
+</footer>
 
 <%- include('./partials/footer'); -%>
