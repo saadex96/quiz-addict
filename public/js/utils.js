@@ -39,7 +39,7 @@ const createQuestion = (question, boardGame, status) => {
 const handleErrors = (error, container) => {
     removeErrors();
     let div = document.createElement('DIV');
-    div.classList.add('errors-container');
+    div.classList.add('errors-container', 'alert', 'alert-dismissible', 'alert-light');
     let text = document.createTextNode(error);
     div.appendChild(text);
     container.appendChild(div);

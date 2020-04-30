@@ -1,9 +1,9 @@
 <%- include('./partials/header'); -%>
 
-<main class="container">
+<main class="container game-container">
     <form action="" method="post" class="form-new-game">
-        <fieldset>
-            <legend>Créer une nouvelle partie</legend>
+        <fieldset class="fieldset">
+            <legend class="legend">Créer une nouvelle partie</legend>
             <div class="form-group">
                 <label for="name">Nom de la partie</label>
                 <input type="text" id="name" name="name" placeholder="nom de la partie" class="form-control form-input" autocomplete="off" autofocus>
@@ -17,7 +17,7 @@
                 <input type="number" name="number" id="number" class="form-control form-input" placeholder="nombre de joueur" autocomplete="off" min="2" max="6" value="2">
                 <small id="emailHelp" class="form-text text-muted">De 2 à 6 joueurs !</small>
             </div>
-            <input type="submit" class="form-input btn-success btn" value="Créer">
+            <input type="submit" class="form-input btn-info btn submit" value="Créer">
         </fieldset>
     </form>
     <div class="main-game-container">
