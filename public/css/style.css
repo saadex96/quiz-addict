@@ -4,6 +4,10 @@ body {
 
 /* BOUTON */
 
+button, button:hover, button:active {
+    outline: none !important;
+}
+
 .btn-danger {
     background-color: #ED2A7A !important;
 }
@@ -132,10 +136,49 @@ body {
 
 /* CREATE GAME */
 
+.game-container {
+    height: calc(100vh - 90px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-.form-title {
-    font-size: 2rem;
-    margin-bottom: 2rem
+.form-new-game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #ED2A7A;
+    border-radius: 25px;
+    min-height: 50vh;
+    padding: 2rem;
+    width: 100%;
+    margin-top: -7rem;
+}
+
+.fieldset {
+    width: 80%;
+}
+
+.legend {
+    margin: 0 0 2rem 0;
+    font-size: 1.5rem;
+}
+
+.form-group {
+    margin: 0 0 2rem 0;
+}
+
+.form-group label {
+    font-size: 1.1rem;
+}
+
+.submit {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    width: 10rem;
 }
 
 /* MAIN GAME */
