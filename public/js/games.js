@@ -35,35 +35,3 @@ socket.on('delete-room', (roomId) => {
         gamesList.removeChild(roomToDelete);
     }
 })
-
-const createLiRoom = (el) => {
-    let li = document.createElement("LI");
-    li.classList.add('game-li');
-    let text = document.createTextNode(el.name);
-    let span = document.createElement("SPAN");
-    span.appendChild(text);
-    li.appendChild(span);
-    li.dataset.name = el.name;
-    li.dataset.id = el.id;
-    li.addEventListener('click', () => {
-        container.removeChild(gamesListCont);
-        formJoin.style.display = "flex";
-        formJoin.addEventListener('submit', (e) => {
-            e.preventDefault();
-            let player = {
-                name: e.target.name.value,
-                password: e.target.password.value,
-                roomId: li.getAttribute('data-id')
-            };
-            socket.emit('join-room', player, (data) => {
-                if (data.code === 'ok') {
-                    container.removeChild(formJoin);
-                    loader.style.display = 'flex';
-                } else {
-                    handleErrors(data.msg, formJoin);
-                }
-            });
-        })
-    })
-    gamesList.appendChild(li);
-}
