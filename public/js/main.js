@@ -31,19 +31,7 @@ if (formNG) {
 }
 
 socket.on('player-join', (player) => {
-    let li = document.createElement("LI");
-    li.classList.add('player-li');
-    li.dataset.playerId = player.id;
-    let span = document.createElement('SPAN');
-    let spanScore = document.createElement('SPAN');
-    spanScore.classList.add('player-score');
-    let text = document.createTextNode(player.name);
-    let score = document.createTextNode(player.score);
-    span.appendChild(text);
-    spanScore.appendChild(score);
-    li.appendChild(span);
-    li.appendChild(spanScore);
-    playersConUl.appendChild(li);
+    createPlayer(player, playersConUl);
 })
 
 socket.on('players-ready', () => {

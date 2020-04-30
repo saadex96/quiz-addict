@@ -8,7 +8,7 @@ const createQuestion = (question, boardGame, status) => {
     let div = document.createElement("DIV");
     div.classList.add('question-container');
     let h3 = document.createElement("H3");
-    h3.classList.add('title-h4');
+    h3.classList.add('question');
     let questionBody = document.createTextNode(question.question);
     h3.appendChild(questionBody);
     div.appendChild(h3);
@@ -36,6 +36,57 @@ const createQuestion = (question, boardGame, status) => {
     boardGame.appendChild(div);
 }
 
+
+const createPlayer = (player, container) => {
+    let li = document.createElement("LI");
+    li.classList.add('player-li');
+    li.dataset.playerId = player.id;
+    let span = document.createElement('SPAN');
+    let spanScore = document.createElement('SPAN');
+    spanScore.classList.add('player-score');
+    let text = document.createTextNode(player.name);
+    let score = document.createTextNode(player.score);
+    span.appendChild(text);
+    spanScore.appendChild(score);
+    li.appendChild(span);
+    li.appendChild(spanScore);
+    container.appendChild(li);
+}
+
+
+const createLiRoom = (el) => {
+    let li = document.createElement("LI");
+    li.classList.add('game-li');
+    let text = document.createTextNode(el.name);
+    let span = document.createElement("SPAN");
+    span.appendChild(text);
+    li.appendChild(span);
+    li.dataset.name = el.name;
+    li.dataset.id = el.id;
+    li.addEventListener('click', () => {
+        container.removeChild(gamesListCont);
+        formJoin.style.display = "flex";
+        formJoin.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let player = {
+                name: e.target.name.value,
+                password: e.target.password.value,
+                roomId: li.getAttribute('data-id')
+            };
+            socket.emit('join-room', player, (data) => {
+                if (data.code === 'ok') {
+                    container.removeChild(formJoin);
+                    loader.style.display = 'flex';
+                } else {
+                    handleErrors(data.msg, formJoin);
+                }
+            });
+        })
+    })
+    gamesList.appendChild(li);
+}
+
+
 const handleErrors = (error, container) => {
     removeErrors();
     let div = document.createElement('DIV');
@@ -44,6 +95,7 @@ const handleErrors = (error, container) => {
     div.appendChild(text);
     container.appendChild(div);
 }
+
 
 const removeErrors = () => {
     let errorsCont = document.querySelector('.errors-container');
