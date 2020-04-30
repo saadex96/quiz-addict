@@ -1,7 +1,6 @@
 <%- include('./partials/header'); -%>
 
 <main class="container game-container">
-    <!--
     <form action="" method="post" class="form-new-game">
         <fieldset class="fieldset">
             <legend class="legend">Créer une nouvelle partie</legend>
@@ -21,47 +20,19 @@
             <input type="submit" class="form-input btn-info btn submit" value="Créer">
         </fieldset>
     </form>
-    -->
-    <div class="main-game-container" style="display: flex;">
-        <h3 class="title-h3 main-game-title">Le quiz de la mort</h3>
+    <div class="main-game-container">
+        <h3 class="title-h3 main-game-title"></h3>
         <div class="quiz-container">
-            <div class="question-container">
-                <h3 class="question">Dans la série télévisé friends quel est la plat préféré de Joey ?</h3>
-                <ul class="option-container">
-                    <li class="option correct-option" data-answer="10">Ravioli</li>
-                    <li class="option" data-answer="11">Epinard</li>
-                    <li class="option" data-answer="12">Pizza</li>
-                    <li class="option" data-answer="13">Sandwitch</li>
-                </ul>
-            </div>
+
         </div>
         <div class="players-container">
             <ul class="players-container-ul">
-                <li class="player-li" data-player-id="8PkZvJNpgeSadtoyAAAK">
-                    <span>Damien</span>
-                    <span class="player-score">100</span>
-                </li>
-                <li class="player-li" data-player-id="1i7kfcdw4Qb7qtqjAAAL">
-                    <span>EmmaMour</span>
-                    <span class="player-score">10</span>
-                </li>
-                <li class="player-li" data-player-id="1i7kfcdw4Qb7qtqjAAAL">
-                    <span>Emma</span>
-                    <span class="player-score">50</span>
-                </li>
-                <li class="player-li" data-player-id="1i7kfcdw4Qb7qtqjAAAL">
-                    <span>Emma</span>
-                    <span class="player-score">85</span>
-                </li>
-                <li class="player-li" data-player-id="1i7kfcdw4Qb7qtqjAAAL">
-                    <span>Emma</span>
-                    <span class="player-score">20</span>
-                </li>
-                <li class="player-li" data-player-id="1i7kfcdw4Qb7qtqjAAAL">
-                    <span>Emma</span>
-                    <span class="player-score">3500</span>
-                </li>
+
             </ul>
+        </div>
+        <div class="loader-container">
+            <p class="loader-status">En attente des joueurs</p>
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
         </div>
     </div>
 </main>

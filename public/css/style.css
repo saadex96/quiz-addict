@@ -2,7 +2,7 @@ body {
     font-family: 'Baloo Bhaina 2', cursive;
 }
 
-/* BOUTON */
+/* btn */
 
 button, button:hover, button:active {
     outline: none !important;
@@ -65,7 +65,7 @@ button, button:hover, button:active {
     justify-content: flex-end;
 }
 
-/* HOME */
+/* --------------HOME------------- */
 
 .home-container {
     height: 90vh;
@@ -143,7 +143,7 @@ button, button:hover, button:active {
 /* home footer */
 
 
-/* CREATE GAME */
+/* --------------CREATE GAME------------- */
 
 .game-container {
     height: calc(100vh - 100px);
@@ -191,7 +191,7 @@ button, button:hover, button:active {
     width: 10rem;
 }
 
-/* MAIN GAME */
+/* --------------MAIN GAME------------- */
 
 .main-game-container {
     display: none;
@@ -216,11 +216,6 @@ button, button:hover, button:active {
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
 }
-
-
-
-
-
 
 /* questions */
 
@@ -296,17 +291,6 @@ button, button:hover, button:active {
     flex-wrap: wrap;
 }
 
-/* Liste des joueurs */
-
-
-/* form join game */
-
-.form-join-game {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-}
-
 .player-li {
     display: flex;
     flex-direction: column;
@@ -337,6 +321,72 @@ button, button:hover, button:active {
     border: 1px solid #FFFFFF;
     border-radius: 10px;
     width: 90%;
+}
+
+/* --------------PLAYER GAME------------- */
+
+/* games list */
+
+.player-game-container {
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 85vw !important;
+}
+
+.games-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 60%;
+    width: 80%;
+    border: 2px solid #1C75DB;
+    border-radius: 5px;
+    min-height: 50vh;
+    padding: 2rem;
+    width: 100%;
+    margin-top: -7rem;
+}
+
+.games-list-container .title-h3 {
+    font-size: 1.5rem;
+}
+
+.games-list {
+    width: 100%;
+    overflow: auto;
+    background-color: #222222;
+    padding: 1rem 0 0 0;
+}
+
+.games-list-ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-li {
+    background-color: #1C75DB;
+    margin: 1rem;
+    padding: 0.5rem 2rem;
+    width: 50%;
+    min-width: 15rem;
+    text-align: center;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* form join game */
+
+.form-join-game {
+    display: none;
+    flex-direction: column;
+    align-items: center;
 }
 
 
