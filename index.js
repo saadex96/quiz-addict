@@ -49,7 +49,7 @@ io.on('connection', (socket) => {
         let playersNbr = parseInt(roomToJoin.playersNbr);
         socket.join(roomToJoin.id);
             if (playersLength <= playersNbr) {
-                if (playerData.name.length >= 2 && playerData.name.length <= 20) {
+                if (playerData.name.length >= 2 && playerData.name.length <= 10) {
                     let player = roomToJoin.newPlayer(socket.id, playerData.name);
                     io.to(playerData.roomId).emit('player-join', player);
                     callback({code: 'ok', msg: 'Room disponible'});
@@ -59,7 +59,7 @@ io.on('connection', (socket) => {
                         io.to(roomToJoin.id).emit('players-ready');
                     }
                 } else {
-                    callback({code: 'error', msg: 'Le nom est doit être supérieur à 2 caractères et inférieur à 20 caractères'});
+                    callback({code: 'error', msg: 'Le nom est doit être supérieur à 2 caractères et inférieur à 10 caractères'});
                 }
             } else {
                 callback({code: 'error', msg: 'Room non disponible'});
