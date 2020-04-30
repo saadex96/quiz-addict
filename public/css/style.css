@@ -2,6 +2,16 @@ body {
     font-family: 'Baloo Bhaina 2', cursive;
 }
 
+/* BOUTON */
+
+.btn-danger {
+    background-color: #ED2A7A !important;
+}
+
+.btn-info {
+    background-color: #1C75DB !important;
+}
+
 /* Main */
 
 .main-container {
@@ -12,27 +22,48 @@ body {
     flex-direction: column;
     align-items: center;
     max-width: 100vw !important;
+    background-color: #151718;
 }
 
 /* Header */
 .header {
-    width: 100%;
+    width: 90vw;
 }
 
 .header nav {
-    background-color: #222222 !important;
+    background-color: #151718 !important;
+    margin-top: 1rem;
+}
+
+.nav-a {
+    margin: 0 1rem;
+}
+
+.navbar-brand {
+    color: #ED2A7A !important;
+    font-weight: bold;
+    font-size: 1.7rem;
+    text-shadow: 2px 2px 0px #1C75DB, -2px -2px 0px #1C75DB, 2px -2px 0px #1C75DB, -2px 2px 0px #1C75DB;
+}
+
+.navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 /* HOME */
 
 .home-container {
-    min-height: 80vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 0 !important;
     padding: 0 !important;
-    max-width: 100vw !important;
+    max-width: 90vw !important;
+    background-position: center;
+    background-size: contain;
 }
 
 .home-container .row {
@@ -49,15 +80,15 @@ body {
 }
 
 .home-img-mob {
-    background-image: linear-gradient(rgba(55, 90, 127, 0.5), rgba(69, 69, 69, 0.5)), url('../images/home-bg.png');
     background-position: center;
     background-size: cover;
 }
 
 .home-img-desk {
-    background-image: linear-gradient(rgba(55, 90, 127, 0.5), rgba(69, 69, 69, 0.5)), url('../images/home-bg.png');
-    background-position: center;
-    background-size: cover;
+    background-image: url('../images/slider_1.png');
+    background-position: right 35% bottom 45%;
+    background-size: contain;
+    background-repeat: no-repeat;
     border-radius: 5px;
     display: none;
 }
@@ -69,18 +100,35 @@ body {
 }
 
 .home-container .btn {
-    padding: 0.8rem 1.5rem;
-    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 1.5rem 0.5rem 1.5rem;
     font-size: 1.4rem;
+}
+
+/* home tuto */
+.tuto-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tuto-p {
+    font-size: 1.3rem;
+    margin: 0 0 0 0rem;
+}
+
+.tuto-ul {
+    margin: 1rem 0 3rem 5rem;
+}
+
+.tuto-ol {
+    margin: 0.5rem 1rem;
+    font-size: 1rem;
 }
 
 /* home footer */
 
-.footer {
-    width: 100%;
-    height: calc(100vh - (80vh + 70px));
-    background-color: #222222;
-}
 
 /* CREATE GAME */
 
@@ -105,6 +153,8 @@ body {
     font-size: 2.5rem;
     margin: 0rem 0rem 3rem 1rem;
     font-weight: 400;
+    line-height: 3rem;
+    text-align: center;
 }
 
 /* loader */
@@ -270,9 +320,18 @@ body {
     animation: 2.5s flash;
 }
 
-@media (min-width: 930px) {
+@media (min-width: 993px) {
     .home-container {
-        max-width: 90vw !important;
+        max-width: calc(100vw - 86px) !important;
+        min-height: 725px !important;
+    }
+
+    .header {
+        width: 90vw;
+    }
+
+    .navbar-brand {
+        margin-left: 0 !important;
     }
 
     .home-container .row {
@@ -284,18 +343,40 @@ body {
         display: initial !important;
     }
 
-    .main-container .btn-container {
-        display: initial !important;
-    }
-
     .col {
-        max-width: 50% !important;
         height: 55vh !important;
+        padding-left: 6rem !important;
     }
 
     .home-img-mob {
         background-image: none;
-        background: linear-gradient(rgba(55, 90, 127, 0.5), rgba(69, 69, 69, 0.5));
+    }
+
+    .title-h3 {
+        font-size: 2.3rem;
+        margin: 0rem 0rem 3rem 0rem;
+        font-weight: 400;
+        text-align: initial;
+    }
+
+    .tuto-container {
+        display: initial;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .tuto-p {
+        margin: 0 0 0 0rem;
+    }
+
+    .tuto-ul {
+        margin: 1.5rem 0 4rem 3rem;
+    }
+
+    .tuto-ol {
+        margin: 0.7rem 1rem;
+        font-size: 1rem;
     }
 }
 
