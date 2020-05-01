@@ -12,8 +12,8 @@ class Room {
         this.responseNumber = 0;
     }
 
-    newPlayer = (playerId, playerName) => {
-        let player = {id: playerId, name: playerName, currentResponse: '', score: 0, isRight: null}
+    newPlayer = (playerId, playerName, playerCharacter) => {
+        let player = {id: playerId, name: playerName, character: playerCharacter, currentResponse: '', score: 0, isRight: null}
         this.players.push(player);
         return player;
     }

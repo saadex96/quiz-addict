@@ -45,12 +45,13 @@ io.on('connection', (socket) => {
     socket.on('join-room', (playerData, callback) => {
         // A faire les else
         let roomToJoin = rooms.find(el => el.id === playerData.roomId );
-        let playersLength = roomToJoin.players.length + 1;
-        let playersNbr = parseInt(roomToJoin.playersNbr);
-        socket.join(roomToJoin.id);
+        if (roomToJoin !== undefined) {
+            let playersLength = roomToJoin.players.length + 1;
+            let playersNbr = parseInt(roomToJoin.playersNbr);
+            socket.join(roomToJoin.id);
             if (playersLength <= playersNbr) {
                 if (playerData.name.length >= 2 && playerData.name.length <= 10) {
-                    let player = roomToJoin.newPlayer(socket.id, playerData.name);
+                    let player = roomToJoin.newPlayer(socket.id, playerData.name, playerData.character);
                     io.to(playerData.roomId).emit('player-join', player);
                     callback({code: 'ok', msg: 'Room disponible'});
                     if (playersLength === playersNbr) {
@@ -64,6 +65,9 @@ io.on('connection', (socket) => {
             } else {
                 callback({code: 'error', msg: 'Room non disponible'});
             }
+        } else {
+            callback({code: 'error', msg: 'La room n\'existe pas'});
+        }
     })
 
     /* Démarrer une partie */

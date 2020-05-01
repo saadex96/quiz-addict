@@ -4,6 +4,10 @@ const container = document.querySelector('#player-view');
 const loader = document.querySelector('.player.loader-container');
 const formJoin = document.querySelector('.form-join-game');
 const playerBoardGame = document.querySelector('.player-board-game');
+const leftArrow = document.querySelector('.left-arrow');
+const rightArrow = document.querySelector('.right-arrow');
+const character = document.querySelector('#character');
+const characterInput = document.querySelector('#character-input');
 
 socket.on('send-rooms', (rooms) => {
     if (rooms != undefined) {
@@ -35,3 +39,22 @@ socket.on('delete-room', (roomId) => {
         gamesList.removeChild(roomToDelete);
     }
 })
+
+/* Carousel */
+
+let i = 1;
+
+rightArrow.addEventListener('click', () => {
+    i++;
+    if (i >= 5) i = 1;
+    character.setAttribute('src', `/images/assets/characters/zombie${i}/idle/1.png`);
+    characterInput.value = `/images/assets/characters/zombie${i}/idle/1.png`;
+})
+
+leftArrow.addEventListener('click', () => {
+    i--;
+    if (i <= 0) i = 4;
+    character.setAttribute('src', `/images/assets/characters/zombie${i}/idle/1.png`);
+    characterInput.value = `/images/assets/characters/zombie${i}/idle/1.png`;
+})
+

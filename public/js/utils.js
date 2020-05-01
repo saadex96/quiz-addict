@@ -53,9 +53,11 @@ const createPlayer = (player, container) => {
     let text = document.createTextNode(player.name);
     let score = document.createTextNode(player.score);
 
+    console.log(player)
+
     let img = document.createElement('IMG');
     img.classList.add('character-img');
-    img.setAttribute('src', '/images/assets/characters/idle/zombie3/Idle1.png');
+    img.setAttribute('src', player.character);
     img.setAttribute('alt', 'personnage');
 
     span.appendChild(text);
@@ -85,6 +87,7 @@ const createLiRoom = (el) => {
             let player = {
                 name: e.target.name.value,
                 password: e.target.password.value,
+                character: e.target.character.value,
                 roomId: li.getAttribute('data-id')
             };
             socket.emit('join-room', player, (data) => {
