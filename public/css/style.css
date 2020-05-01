@@ -256,7 +256,7 @@ button, button:hover, button:active {
     padding: 0.5rem;
     letter-spacing: -1px;
     width: 50%;
-    min-width: 20rem;
+    min-width: 15rem;
     margin-right: auto;
     margin-left: auto;
     transform: rotate(-3deg);
@@ -437,23 +437,14 @@ button, button:hover, button:active {
     min-width: 85vw !important;
 }
 
-.games-list-container {
+.game-layout {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 60%;
     width: 80%;
     background-color: #222222;
     box-shadow: 21px 21px 0px #111111;
-    min-height: 50vh;
     padding: 2rem;
-    width: 100%;
-    margin-top: -7rem;
-}
-
-.games-list-container .title-h3 {
-    width: 40%;
-    min-width: 20rem;
 }
 
 .games-list {
@@ -488,21 +479,33 @@ button, button:hover, button:active {
 
 .form-join-game {
     display: none;
-    flex-direction: column;
-    align-items: center;
-    min-height: 60%;
-    width: 80%;
-    background-color: #222222;
-    box-shadow: 21px 21px 0px #111111;
-    min-height: 50vh;
-    padding: 2rem;
-    width: 100%;
-    margin-top: 2rem;
+    margin: 10rem 0 4rem 0;
 }
 
-.form-join-game .title-h3 {
-    width: 40%;
-    min-width: 20rem;
+.carousel-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+#character {
+    height: 10rem;
+    width: 7rem;
+}
+
+.arrow {
+    width: 2rem;
+    height: 2rem;
+    background-color: #F2CB05;
+}
+
+.left-arrow {
+    margin-right: 15px;
+}
+
+.right-arrow {
+    margin-right: 15px;
 }
 
 /* Player Board Game */
@@ -544,6 +547,14 @@ button, button:hover, button:active {
 @media (min-width: 400px) {
     .home-img-mob {
         margin: 0rem;
+    }
+
+    .player-game-container {
+        margin: 0rem 0rem;
+    }
+
+    .form-join-game {
+        margin-top: -0rem;
     }
 }
 
@@ -617,8 +628,17 @@ button, button:hover, button:active {
         margin-top: -7rem;
     }
 
-    .form-join-game {
-        margin-top: -7rem;
+    .player-game-container {
+        margin: 2rem 0rem;
+        height: calc(90vh - 91px) !important;
+    }
+
+    .game-layout {
+        margin-top: 0rem;
+    }
+
+    .games-list-container {
+        margin-top: -10rem;
     }
 
     .player-board-game .question {
@@ -628,6 +648,10 @@ button, button:hover, button:active {
     .player-board-game .option {
         font-size: 1.5rem;
         margin: 1rem 0.5rem;
+    }
+
+    .form-join-game {
+        margin-top: 2rem !important;
     }
 }
 
