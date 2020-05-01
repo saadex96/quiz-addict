@@ -17,7 +17,7 @@
                 <input type="number" name="number" id="number" class="form-control form-input" placeholder="nombre de joueur" autocomplete="off" min="2" max="6" value="2">
                 <small id="emailHelp" class="form-text text-muted">De 2 à 6 joueurs !</small>
             </div>
-            <input type="submit" class="form-input btn-info btn submit" value="Créer">
+            <button type="submit" class="btn-own btn-game btn-submit">Créer</button>
         </fieldset>
     </form>
     <div class="main-game-container">
@@ -25,14 +25,14 @@
         <div class="quiz-container">
 
         </div>
+        <div class="loader-container">
+            <p class="loader-status">En attente des joueurs</p>
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        </div>
         <div class="players-container">
             <ul class="players-container-ul">
 
             </ul>
-        </div>
-        <div class="loader-container">
-            <p class="loader-status">En attente des joueurs</p>
-            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
         </div>
     </div>
 </main>

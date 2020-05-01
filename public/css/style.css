@@ -1,5 +1,5 @@
 body {
-    font-family: 'Baloo Bhaina 2', cursive;
+    font-family: 'Rubik One', sans-serif !important;
 }
 
 /* btn */
@@ -8,13 +8,58 @@ button, button:hover, button:active {
     outline: none !important;
 }
 
-.btn-danger {
-    background-color: #ED2A7A !important;
+.btn-own {
+    font-family: 'Rubik One', sans-serif !important;
+    text-decoration: none;
+    border-radius: 0;
+    color: #111111;
+    background-color: #FF3019;
+    font-weight: bold;
+    border: 1px solid #111111 !important;
+    padding: 1rem 1rem;
+    letter-spacing: 2px;
+    box-shadow: 7px 7px 0px #111111;
+    text-decoration: none;
 }
 
-.btn-info {
-    background-color: #1C75DB !important;
+.btn-own:hover, .btn-own:active, .btn-own:focus {
+    background-color: #FF3019 !important;
+    color: #111111 !important;
+    text-decoration: none;
 }
+
+.btn-game:hover, .btn-game:active, .btn-game:focus {
+    background-color: #F2CB05 !important;
+    color: #111111 !important;
+    text-decoration: none;
+}
+
+.btn-game {
+    background-color: #F2CB05 !important;
+    font-size: 1.4rem;
+    margin: 0 1rem 0 1rem;
+    box-shadow: 10px 10px 0px #111111;
+}
+
+.btn-game:active {
+    transform: translate(0.1rem, 0.1rem);
+    box-shadow: 1px 2px 0px #111111;
+    border: 1px solid #111111 !important;
+}
+
+.nav-item:active {
+    transform: translate(0.1rem, 0.1rem);
+}
+
+.nav-item:active .btn-own {
+    box-shadow: 1px 2px 0px #111111;
+    border: 1px solid #111111 !important;
+}
+
+.btn-submit, .btn-submit:hover, .btn-submit:active, .btn-submit:focus {
+    background-color: #9EF09A !important;
+}
+
 
 /* Main */
 
@@ -26,7 +71,8 @@ button, button:hover, button:active {
     flex-direction: column;
     align-items: center;
     max-width: 100vw !important;
-    background-color: #151718;
+    background-color: #9EF09A;
+    color: #FFFFFF;
 }
 
 .title-h3 {
@@ -38,13 +84,14 @@ button, button:hover, button:active {
     text-align: center;
 }
 
+
 /* Header */
 .header {
     width: 90vw;
 }
 
 .header nav {
-    background-color: #151718 !important;
+    background-color: #9EF09A !important;
     margin-top: 1rem;
 }
 
@@ -53,10 +100,13 @@ button, button:hover, button:active {
 }
 
 .navbar-brand {
-    color: #ED2A7A !important;
+    background-color: #111111;
+    padding: 0.5rem 0.5rem;
+    color: #F2CB05 !important;
     font-weight: bold;
     font-size: 1.7rem;
-    text-shadow: 2px 2px 0px #1C75DB, -2px -2px 0px #1C75DB, 2px -2px 0px #1C75DB, -2px 2px 0px #1C75DB;
+    color: white;
+    letter-spacing: -3px;
 }
 
 .navbar-nav {
@@ -68,15 +118,13 @@ button, button:hover, button:active {
 /* --------------HOME------------- */
 
 .home-container {
-    height: 90vh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 0 !important;
     padding: 0 !important;
     max-width: 90vw !important;
-    background-position: center;
-    background-size: contain;
 }
 
 .home-container .row {
@@ -84,17 +132,32 @@ button, button:hover, button:active {
     flex-direction: column;
 }
 
+.home-title {
+    background-color: #F2CB05;
+    color: #111111;
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    padding: 0.5rem 0;
+    box-shadow: 10px 10px 0px #111111;
+    letter-spacing: -2px;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    transform: rotate(-3deg);
+}
+
 .col {
     display: flex;
     flex-direction: column;
     justify-content: center;
     max-width: 100% !important;
-    height: 55vh !important;
 }
 
 .home-img-mob {
-    background-position: center;
-    background-size: cover;
+    background-color: #162F40;
+    box-shadow: 21px 21px 0px #111111;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 
 .home-img-desk {
@@ -132,7 +195,7 @@ button, button:hover, button:active {
 }
 
 .tuto-ul {
-    margin: 1rem 0 3rem 5rem;
+    margin: 1rem 0 3rem 1rem;
 }
 
 .tuto-ol {
@@ -159,12 +222,20 @@ button, button:hover, button:active {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid #ED2A7A;
-    border-radius: 5px;
+    background-color: #162F40;
+    box-shadow: 21px 21px 0px #111111;
     min-height: 50vh;
     padding: 2rem;
     width: 100%;
     margin-top: -7rem;
+}
+
+.form-input, .form-input:focus {
+    background-color: #111111;
+    border-radius: 0 !important;
+    outline: none;
+    color: #9EF09A;
+    font-size: 1.1rem;
 }
 
 .fieldset {
@@ -172,8 +243,21 @@ button, button:hover, button:active {
 }
 
 .legend {
-    margin: 0 0 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
     font-size: 1.5rem;
+    background-color: #F2CB05;
+    color: #111111;
+    box-shadow: 10px 10px 0px #111111;
+    padding: 0.5rem;
+    letter-spacing: -1px;
+    width: 50%;
+    min-width: 20rem;
+    margin-right: auto;
+    margin-left: auto;
+    transform: rotate(-3deg);
 }
 
 .form-group {
@@ -182,6 +266,7 @@ button, button:hover, button:active {
 
 .form-group label {
     font-size: 1.1rem;
+    color: #9EF09A;
 }
 
 .submit {
@@ -342,8 +427,8 @@ button, button:hover, button:active {
     align-items: center;
     height: 60%;
     width: 80%;
-    border: 2px solid #1C75DB;
-    border-radius: 5px;
+    background-color: #162F40;
+    box-shadow: 21px 21px 0px #111111;
     min-height: 50vh;
     padding: 2rem;
     width: 100%;
@@ -351,14 +436,15 @@ button, button:hover, button:active {
 }
 
 .games-list-container .title-h3 {
-    font-size: 1.5rem;
+    width: 40%;
+    min-width: 20rem;
 }
 
 .games-list {
     width: 100%;
     overflow: auto;
-    background-color: #222222;
-    padding: 1rem 0 0 0;
+    background-color: #111111;
+    padding: 0rem 0 0 0;
 }
 
 .games-list-ul {
@@ -370,15 +456,16 @@ button, button:hover, button:active {
 }
 
 .game-li {
-    background-color: #1C75DB;
+    background-color: #9EF09A;
+    color: #111111;
     margin: 1rem;
-    padding: 0.5rem 2rem;
+    padding: 01rem 2rem;
     width: 50%;
     min-width: 15rem;
     text-align: center;
     font-size: 1.2rem;
-    border-radius: 5px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 /* form join game */
@@ -387,10 +474,29 @@ button, button:hover, button:active {
     display: none;
     flex-direction: column;
     align-items: center;
+    min-height: 60%;
+    width: 80%;
+    background-color: #162F40;
+    box-shadow: 21px 21px 0px #111111;
+    min-height: 50vh;
+    padding: 2rem;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.form-join-game .title-h3 {
+    width: 40%;
+    min-width: 20rem;
+}
+
+@media (min-width: 400px) {
+    .home-img-mob {
+        margin: 0rem;
+    }
 }
 
 
-@media (min-width: 993px) {
+@media (min-width: 1025px) {
     .home-container {
         max-width: calc(100vw - 90px) !important;
         min-height: 725px !important;
@@ -415,11 +521,13 @@ button, button:hover, button:active {
 
     .col {
         height: 55vh !important;
-        padding-left: 6rem !important;
+        padding:0 2rem 0 2rem !important;
     }
 
     .home-img-mob {
         background-image: none;
+        min-height: 430px;
+        margin: -2rem 0 0 4rem;
     }
 
     .title-h3 {
@@ -447,6 +555,10 @@ button, button:hover, button:active {
     .tuto-ol {
         margin: 0.7rem 1rem;
         font-size: 1rem;
+    }
+
+    .form-join-game {
+        margin-top: -7rem;
     }
 }
 

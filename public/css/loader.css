@@ -8,6 +8,10 @@
     align-items: center;
 }
 
+.loader-status {
+    text-align: center;
+}
+
 .player.loader-container {
     display: none;
 }
