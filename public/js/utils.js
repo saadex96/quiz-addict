@@ -39,17 +39,31 @@ const createQuestion = (question, boardGame, status) => {
 
 const createPlayer = (player, container) => {
     let li = document.createElement("LI");
-    li.classList.add('player-li');
+    li.classList.add('character-cont');
     li.dataset.playerId = player.id;
+
+    let div = document.createElement('DIV');
+    div.classList.add('player-li');
+
     let span = document.createElement('SPAN');
+
     let spanScore = document.createElement('SPAN');
     spanScore.classList.add('player-score');
+
     let text = document.createTextNode(player.name);
     let score = document.createTextNode(player.score);
+
+    let img = document.createElement('IMG');
+    img.classList.add('character-img');
+    img.setAttribute('src', '/images/assets/characters/idle/zombie3/Idle1.png');
+    img.setAttribute('alt', 'personnage');
+
     span.appendChild(text);
     spanScore.appendChild(score);
-    li.appendChild(span);
-    li.appendChild(spanScore);
+    div.appendChild(span);
+    div.appendChild(spanScore);
+    li.appendChild(div);
+    li.appendChild(img);
     container.appendChild(li);
 }
 
