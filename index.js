@@ -95,7 +95,6 @@ io.on('connection', (socket) => {
         } else {
             callback({code: 'error', msg: 'La room n\'existe pas'});
         }
-
     })
 
     /* Gérer les déconnexions */
