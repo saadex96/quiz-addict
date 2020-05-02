@@ -16,6 +16,7 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 
 let rooms = [];
+let timer;
 
 io.on('connection', (socket) => {
 
@@ -75,9 +76,7 @@ io.on('connection', (socket) => {
         let currentRoom = rooms.find(el => el.id === roomId );
         if (currentRoom) {
             callback({code: 'ok', msg: 'game-started'})
-            setTimeout(() => {
-                currentRoom.newQuestion(currentRoom, io);
-            }, 5000)
+            askQuestion(currentRoom);
         } else {
             callback({code: 'error', msg: 'la room n\'existe pas'})
         }
@@ -89,8 +88,7 @@ io.on('connection', (socket) => {
         if (room) {
             room.checkResponse(playerData.answer, socket.id);
             if (room.allPlayersResponded()) {
-                io.to(room.id).emit('update-game', {players: room.players, correctAnswer: room.currentAnswer});
-                setTimeout(() => room.newQuestion(room, io), 6000);
+                askQuestion(room);
             }
         } else {
             callback({code: 'error', msg: 'La room n\'existe pas'});
@@ -105,6 +103,36 @@ io.on('connection', (socket) => {
         }
     });
 });
+
+const askQuestion = (room) => {
+    stopTimer();
+    io.to(room.id).emit('update-game', {players: room.players, correctAnswer: room.currentAnswer});
+    setTimeout(() => {
+        let question = room.newQuestion();
+        io.to(room.id).emit('new-question', {
+            question: question[0],
+            options: question[1],
+            roomId: question[2]
+        });
+        startTimer(room);
+    }, 5000);
+}
+
+const startTimer = (room) => {
+    let i = 30;
+    timer = setInterval(() => {
+        io.to(room.id).emit('timer', i);
+        i--;
+        if (i === -1) {
+            stopTimer();
+            askQuestion(room);
+        }
+    }, 1000)
+}
+
+const stopTimer = () => {
+    clearInterval(timer);
+}
 
 const deleteRoom = (room) => {
     let roomIndex = rooms.indexOf(room);

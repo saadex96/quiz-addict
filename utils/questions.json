@@ -11,7 +11,7 @@
             "answer": "Huston Rocket"
         },
         "2": {
-            "question": "5 + 7 = ?",
+            "question": "Aloooooooooooooooooorrrrsss ????",
             "options": [
                 "10",
                 "11",
@@ -21,11 +21,61 @@
             "answer": "12"
         },
         "3": {
-            "question": "12 - 8 = ?",
+            "question": "Faite que ça marche",
             "options": [
                 "1",
                 "2",
                 "3",
+                "4"
+            ],
+            "answer": "4"
+        },
+        "4": {
+            "question": "C'est toi la vallée",
+            "options": [
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "answer": "4"
+        },
+        "5": {
+            "question": "Dans la vallé",
+            "options": [
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "answer": "4"
+        },
+        "6": {
+            "question": "Hey oh le nouveau son",
+            "options": [
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "answer": "4"
+        },
+        "7": {
+            "question": "Bonoiudshfi ouhoh ogipjgpi jpihpo  k",
+            "options": [
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "answer": "4"
+        },
+        "8": {
+            "question": "Quel est le plat préféré de Joeyr",
+            "options": [
+                "pizz",
+                "san",
+                "yo",
                 "4"
             ],
             "answer": "4"

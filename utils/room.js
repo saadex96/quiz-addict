@@ -18,22 +18,20 @@ class Room {
         return player;
     }
 
-    newQuestion = (room, io) => {
+    newQuestion = () => {
         this.players.map(el => {
             el.currentResponse = null
         })
         this.responseNumber = 0;
 
-        let random = Math.floor(Math.random() * (3 - 1) + 1);
-        let question = questions.quiz[random];
-        this.questions.push(question);
-        this.currentAnswer = question.answer;
+        let random = Math.floor(Math.random() * (7 - 1) + 1);
+        let cQuestion = questions.quiz[random];
+        this.questions.push(cQuestion);
+        this.currentAnswer = cQuestion.answer;
 
-        io.to(room.id).emit('new-question', {
-            question: questions.quiz[random].question,
-            options: questions.quiz[random].options,
-            roomId: room.id
-        });
+        let data = [cQuestion.question, cQuestion.options, this.id]
+
+        return data;
     }
 
     checkResponse = (answer, socketId) => {
