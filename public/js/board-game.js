@@ -50,11 +50,17 @@ socket.on('new-question', (question) => {
 
 socket.on('update-game', (updatedGame) => {
         setTimeout(() => {
-            let answer = document.querySelector(`[data-answer='${updatedGame.correctAnswer}']`);
-            answer.classList.add('correct-option');
-            updatePlayers(updatedGame.players);
+            if (updatedGame.correctAnswer !== null) {
+                let answer = document.querySelector(`[data-answer='${updatedGame.correctAnswer}']`);
+                answer.classList.add('correct-option');
+                updatePlayers(updatedGame.players);
+            }
         }, 1300)
 
+})
+
+socket.on('timer', (timer) => {
+    console.log(timer);
 })
 
 const updatePlayers = (players) => {
