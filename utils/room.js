@@ -46,7 +46,7 @@ class Room {
         }
 
         if (player.currentResponse === this.currentAnswer) {
-            player.score ++;
+            player.score += 10;
             player.isRight = true;
         } else {
             player.isRight = false;

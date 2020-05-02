@@ -20,6 +20,7 @@ button, button:hover, button:active {
     letter-spacing: 2px;
     box-shadow: 7px 7px 0px #111111;
     text-decoration: none;
+    transition: all 0.2s;
 }
 
 .btn-own:hover, .btn-own:active, .btn-own:focus {
@@ -49,6 +50,7 @@ button, button:hover, button:active {
 
 .nav-item:active {
     transform: translate(0.1rem, 0.1rem);
+    transition: all 0.2s;
 }
 
 .nav-item:active .btn-own {
@@ -162,6 +164,7 @@ button, button:hover, button:active {
     box-shadow: 21px 21px 0px #111111;
     margin-top: 4rem;
     margin-bottom: 4rem;
+    transform: scale(0.95);
 }
 
 .home-img-desk {
