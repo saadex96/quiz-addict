@@ -3,7 +3,7 @@ const titleMG = document.querySelector('.main-game-title');
 const mainGame = document.querySelector('.main-game-container');
 const playersConUl = document.querySelector('.players-container-ul');
 const loader = document.querySelector('.loader-container');
-const quizContainer = document.querySelector('.quiz-container')
+const quizContainer = document.querySelector('.quiz-container');
 
 let roomId;
 
@@ -23,7 +23,6 @@ if (formNG) {
                 titleMG.innerHTML += data.room.name;
                 roomId = data.room.id;
             } else {
-                console.log(data.msg)
                 handleErrors(data.msg, formNG);
             }
         });
@@ -59,14 +58,6 @@ socket.on('update-game', (updatedGame) => {
 
 })
 
-socket.on('timer', (timer) => {
-    console.log(timer);
+socket.on('timer', (time) => {
+    updateTimer(time);
 })
-
-const updatePlayers = (players) => {
-    players.map(player => {
-        let score = document.querySelector(`[data-player-id='${player.id}'] .player-score`);
-        console.log(score)
-        score.textContent = player.score;
-    })
-}
