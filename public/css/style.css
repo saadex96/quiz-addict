@@ -322,7 +322,7 @@ button, button:hover, button:active {
     height: 1rem;
     background: linear-gradient(0.25turn, #DB2B30, #32A955);
     z-index: 0;
-    transition: width 1s linear;
+    border-radius: 50px;
 }
 
 .timer {
@@ -330,8 +330,9 @@ button, button:hover, button:active {
     right: 0%;
     width: 0%;
     height: 1rem;
-    background-color: #222222;
+    background-color: #111111;
     z-index: -4;
+    transition: width 1s linear;
 }
 
 .question-container {
@@ -373,7 +374,7 @@ button, button:hover, button:active {
 
 .correct-option {
     background-color: #32A955;
-    animation: flash 0.5s 5 ease-in-out;
+    animation: flash 1s 5 ease-in-out;
 }
 
 /* players */
@@ -680,6 +681,7 @@ button, button:hover, button:active {
         margin-top: 2rem !important;
     }
 }
+
 
 @keyframes flash {
     from {

@@ -72,7 +72,7 @@ const createPlayer = (player, container) => {
 
     let text = document.createTextNode(player.name);
     let score = document.createTextNode(player.score);
-    
+
     let img = document.createElement('IMG');
     img.classList.add('character-img');
     img.setAttribute('src', player.character);
