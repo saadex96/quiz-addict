@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
+const PORT = process.env.PORT || 3000
 const routes = require('./routes/routes');
 const helmet = require('helmet');
 const { Room } = require("./utils/room");
@@ -150,6 +151,4 @@ const deleteRoom = (room) => {
     io.emit('delete-room', roomId);
 }
 
-http.listen(3000, function () {
-    console.log('Example app listening on port 3000!');
-})
+http.listen(PORT, () => console.log(`Listening on ${ PORT }`))

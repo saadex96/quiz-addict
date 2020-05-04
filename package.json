@@ -1,10 +1,11 @@
 {
-  "name": "node-app",
+  "name": "QuizTime",
   "version": "1.0.0",
-  "description": "first node app",
+  "description": "A multiplayer quiz game",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "Damien",
   "license": "ISC",
@@ -13,5 +14,9 @@
     "express": "^4.17.1",
     "helmet": "^3.22.0",
     "socket.io": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DamienMgn/quiz-addict"
   }
 }
