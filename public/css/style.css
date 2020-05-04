@@ -218,7 +218,6 @@ button, button:hover, button:active {
     height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     min-width: 85% !important;
 }
@@ -229,7 +228,6 @@ button, button:hover, button:active {
     justify-content: center;
     align-items: center;
     background-color: #222222;
-    box-shadow: 21px 21px 0px #111111;
     min-height: 50vh;
     padding: 2rem;
     width: 100%;
@@ -655,6 +653,12 @@ button, button:hover, button:active {
         font-size: 1rem;
     }
 
+    .form-new-game {
+        box-shadow: 21px 21px 0px #111111;
+        margin-top: 2rem;
+        max-width: 1000px;
+    }
+
     .player-game-container {
         margin: 2rem 0rem;
         height: calc(90vh - 91px) !important;
@@ -663,6 +667,7 @@ button, button:hover, button:active {
     .game-layout {
         margin-top: 2rem !important;
         box-shadow: 21px 21px 0px #111111;
+        max-width: 1000px;
     }
 
     .games-list-ul {
