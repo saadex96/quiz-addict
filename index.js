@@ -99,6 +99,7 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         let room = rooms.find(el => el.id === socket.id);
         if (room) {
+            io.to(room.id).emit('room-disconnected');
             deleteRoom(room);
         }
     });

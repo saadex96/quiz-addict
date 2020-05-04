@@ -590,7 +590,8 @@ button, button:hover, button:active {
 
 @media (min-width: 1025px) {
     .home-container {
-        max-width: calc(100vw - 90px) !important;
+        max-width: 95vw !important;
+        height: calc(100vh - 100px);
         min-height: 725px !important;
     }
 

@@ -44,6 +44,10 @@ socket.on('delete-room', (roomId) => {
     }
 })
 
+socket.on('room-disconnected', () => {
+    window.location.replace("/");
+})
+
 /* Carousel */
 
 let i = 1;
