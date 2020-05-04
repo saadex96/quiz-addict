@@ -318,7 +318,6 @@ button, button:hover, button:active {
     height: 1rem;
     background: linear-gradient(0.25turn, #DB2B30, #32A955);
     z-index: 0;
-    border-radius: 50px;
 }
 
 .timer {
