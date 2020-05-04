@@ -246,9 +246,7 @@ button, button:hover, button:active {
 }
 
 .legend {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     margin-bottom: 2rem;
     font-size: 1.5rem;
     background-color: #F2CB05;

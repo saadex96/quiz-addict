@@ -61,3 +61,17 @@ socket.on('update-game', (updatedGame) => {
 socket.on('timer', (time) => {
     updateTimer(time);
 })
+
+socket.on('end-game', (room) => {
+    mainGame.removeChild(quizContainer);
+
+    let h3 = document.createElement('H3');
+    let title = document.createTextNode('Partie terminée !!!');
+
+    h3.appendChild(title);
+    h3.classList.add('legend');
+
+    mainGame.insertBefore(h3, mainGame.childNodes[2]);
+
+
+})

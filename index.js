@@ -109,6 +109,7 @@ const askQuestion = (room) => {
     stopTimer();
     io.to(room.id).emit('update-game', {players: room.players, correctAnswer: room.currentAnswer});
     setTimeout(() => {
+        if (room.endGame !== 0) {
         let question = room.newQuestion();
         io.to(room.id).emit('new-question', {
             question: question[0],
@@ -116,6 +117,9 @@ const askQuestion = (room) => {
             roomId: question[2]
         });
         startTimer(room);
+        } else {
+            io.to(room.id).emit('end-game', room);
+        }
     }, 5000);
 }
 

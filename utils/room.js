@@ -10,6 +10,7 @@ class Room {
         this.currentAnswer = null;
         this.isFull = false;
         this.responseNumber = 0;
+        this.endGame = 2;
     }
 
     newPlayer = (playerId, playerName, playerCharacter) => {
@@ -19,6 +20,7 @@ class Room {
     }
 
     newQuestion = () => {
+        this.endGame --;
         this.players.map(el => {
             el.currentResponse = null
         })
@@ -29,7 +31,7 @@ class Room {
         this.questions.push(cQuestion);
         this.currentAnswer = cQuestion.answer;
 
-        let data = [cQuestion.question, cQuestion.options, this.id]
+        let data = [cQuestion.question, cQuestion.options, this.id];
 
         return data;
     }
