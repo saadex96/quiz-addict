@@ -1,9 +1,10 @@
 const questions = require('../utils/questions.json');
 
 class Room {
-    constructor(id, name, nbr) {
+    constructor(id, name, password, nbr) {
         this.id = id;
         this.name = name;
+        this.password = password;
         this.playersNbr = nbr;
         this.players = [];
         this.questions = [];
