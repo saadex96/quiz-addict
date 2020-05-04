@@ -13,4 +13,12 @@ router.get('/buzzer', function (req, res) {
     res.render('buzzer.ejs');
 })
 
+router.get('/connexion', function (req, res) {
+    res.render('not-ready.ejs');
+})
+
+router.get('/inscription', function (req, res) {
+    res.render('not-ready.ejs');
+})
+
 module.exports = router;
