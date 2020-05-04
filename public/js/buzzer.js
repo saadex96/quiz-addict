@@ -8,6 +8,7 @@ const leftArrow = document.querySelector('.left-arrow');
 const rightArrow = document.querySelector('.right-arrow');
 const character = document.querySelector('#character');
 const characterInput = document.querySelector('#character-input');
+const playerGameCont = document.querySelector('.player-game-container');
 
 socket.on('send-rooms', (rooms) => {
     if (rooms != undefined) {
@@ -26,6 +27,7 @@ socket.on('players-ready', () => {
 })
 
 socket.on('new-question', (question) => {
+    playerGameCont.style.justifyContent = 'center';
     createQuestion(question, playerBoardGame, true);
 })
 

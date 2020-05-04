@@ -28,7 +28,7 @@ io.on('connection', (socket) => {
         // TODO Password
         if (data.number >= 2 && data.number<= 6) {
             if(data.name.length >= 3 && data.name.length <= 35) {
-                let room = new Room(socket.id, data.name, data.number);
+                let room = new Room(socket.id, data.name, data.password, data.number);
                 socket.join(room.id);
                 rooms.push(room);
                 io.emit('new-room', room);
@@ -51,23 +51,27 @@ io.on('connection', (socket) => {
             let playersNbr = parseInt(roomToJoin.playersNbr);
             socket.join(roomToJoin.id);
             if (playersLength <= playersNbr) {
-                if (playerData.name.length >= 2 && playerData.name.length <= 10) {
-                    let player = roomToJoin.newPlayer(socket.id, playerData.name, playerData.character);
-                    io.to(playerData.roomId).emit('player-join', player);
-                    callback({code: 'ok', msg: 'Room disponible'});
-                    if (playersLength === playersNbr) {
-                        io.emit('delete-room', roomToJoin.id);
-                        roomToJoin.isFull = true;
-                        io.to(roomToJoin.id).emit('players-ready');
+                if(playerData.password === roomToJoin.password) {
+                    if (playerData.name.length >= 2 && playerData.name.length <= 10) {
+                        let player = roomToJoin.newPlayer(socket.id, playerData.name, playerData.character);
+                        io.to(playerData.roomId).emit('player-join', player);
+                        callback({code: 'ok', msg: 'Room disponible'});
+                        if (playersLength === playersNbr) {
+                            io.emit('delete-room', roomToJoin.id);
+                            roomToJoin.isFull = true;
+                            io.to(roomToJoin.id).emit('players-ready');
+                        }
+                    } else {
+                        callback({code: 'error', msg: 'Le nom est doit être supérieur à 2 caractères et inférieur à 10 caractères.'});
                     }
                 } else {
-                    callback({code: 'error', msg: 'Le nom est doit être supérieur à 2 caractères et inférieur à 10 caractères'});
+                    callback({code: 'error', msg: 'Le mot de passe ne correspond pas.'});
                 }
             } else {
-                callback({code: 'error', msg: 'Room non disponible'});
+                callback({code: 'error', msg: 'Room non disponible.'});
             }
         } else {
-            callback({code: 'error', msg: 'La room n\'existe pas'});
+            callback({code: 'error', msg: 'La room n\'existe pas.'});
         }
     })
 
