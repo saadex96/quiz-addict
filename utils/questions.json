@@ -1,84 +1,74 @@
 {
     "quiz": {
         "1": {
-            "question": "Which one is correct team name in NBA?",
+            "question": "Quand l'expression 'BIG BANG' a t'elle été utilisée pour la première fois ?",
             "options": [
-                "New York Bulls",
-                "Los Angeles Kings",
-                "Golden State Warriros",
-                "Huston Rocket"
+                "100 av J.C",
+                "1999",
+                "1950",
+                "1916"
             ],
-            "answer": "Huston Rocket"
+            "answer": "1950"
         },
         "2": {
-            "question": "Aloooooooooooooooooorrrrsss ????",
+            "question": "Combien de Terre faudrait-il pour faire le diamètre du Soleil ?",
             "options": [
-                "10",
-                "11",
-                "12",
-                "13"
+                "999",
+                "109",
+                "399",
+                "6"
             ],
-            "answer": "12"
+            "answer": "109"
         },
         "3": {
-            "question": "Faite que ça marche",
+            "question": "Quel est le continent le plus vaste ?",
             "options": [
-                "1",
-                "2",
-                "3",
-                "4"
+                "Europe",
+                "Asie",
+                "Afrique",
+                "Océanie"
             ],
-            "answer": "4"
+            "answer": "Asie"
         },
         "4": {
-            "question": "C'est toi la vallée",
+            "question": "Quel est le fleuve le plus long du monde ?",
             "options": [
-                "1",
-                "2",
-                "3",
-                "4"
+                "Euphrate",
+                "Le Rhin",
+                "Le Nil",
+                "L Amazone"
             ],
-            "answer": "4"
+            "answer": "L Amazone"
         },
         "5": {
-            "question": "Dans la vallé",
+            "question": "Qui est l'inventeur de la dynamite?",
             "options": [
-                "1",
-                "2",
-                "3",
-                "4"
+                "Samuel Colt",
+                "Benjamin Franklin",
+                "Alfred Nobel",
+                "J'vaistoutfairepéter Junior"
             ],
-            "answer": "4"
+            "answer": "Alfred Nobel"
         },
         "6": {
-            "question": "Hey oh le nouveau son",
+            "question": "Quel est le nom du Volcan responsable de la destruction de la ville de Pompéi?",
             "options": [
-                "1",
-                "2",
-                "3",
-                "4"
+                "L'Etna",
+                "Le Kilimandjaro",
+                "Le Vésuve",
+                "Le Krakatoa"
             ],
-            "answer": "4"
+            "answer": "Le Vésuve"
         },
         "7": {
-            "question": "Bonoiudshfi ouhoh ogipjgpi jpihpo  k",
+            "question": "Dans quel couche de l'atmosphère se trouve la couche d'ozone?",
             "options": [
-                "1",
-                "2",
-                "3",
-                "4"
+                "La Stratosphère",
+                "La Troposphère",
+                "La Mésosphère",
+                "La Thermosphère"
             ],
-            "answer": "4"
-        },
-        "8": {
-            "question": "Quel est le plat préféré de Joeyr",
-            "options": [
-                "pizz",
-                "san",
-                "yo",
-                "4"
-            ],
-            "answer": "4"
+            "answer": "La Stratosphère"
         }
     }
 }
