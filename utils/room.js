@@ -11,7 +11,7 @@ class Room {
         this.currentAnswer = null;
         this.isFull = false;
         this.responseNumber = 0;
-        this.endGame = 2;
+        this.endGame = 5;
     }
 
     newPlayer = (playerId, playerName, playerCharacter) => {

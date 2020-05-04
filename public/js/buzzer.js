@@ -31,9 +31,7 @@ socket.on('new-question', (question) => {
     createQuestion(question, playerBoardGame, true);
 })
 
-socket.on('update-game', () => {
-    playerBoardGame.removeChild(document.querySelector('.question-container'));
-})
+socket.on('update-game', () => {})
 
 socket.on('timer', (time) => {
     updateTimer(time);

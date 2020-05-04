@@ -32,9 +32,9 @@ const createQuestion = (question, boardGame, status) => {
     let ul = document.createElement("UL");
     ul.classList.add('option-container');
 
-    question.options.map(el => {
+    question.options.map((el, index) => {
         let li = document.createElement("LI");
-        li.classList.add('option');
+        li.classList.add('option', 'option-' + index);
         li.dataset.answer = el;
 
         let option = document.createTextNode(el);
@@ -46,6 +46,14 @@ const createQuestion = (question, boardGame, status) => {
                 socket.emit('check-answer', {answer: el, roomId: question.roomId}, (data) => {
                     if (data.code === 'error') {
                         handleErrors(data.msg, boardGame);
+                    } else {
+                        console.log(data.answer)
+                        ul.style.display = 'none';
+                        let playerAnswer = document.createTextNode(data.answer);
+                        let span = document.createElement('SPAN');
+                        span.appendChild(playerAnswer);
+                        span.classList.add('option');
+                        div.appendChild(span);
                     }
                 })
             })
@@ -55,7 +63,6 @@ const createQuestion = (question, boardGame, status) => {
     boardGame.appendChild(timerContainer);
     boardGame.appendChild(div);
 }
-
 
 const createPlayer = (player, container) => {
     let li = document.createElement("LI");

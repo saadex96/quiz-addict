@@ -92,6 +92,7 @@ io.on('connection', (socket) => {
         let room = rooms.find(el => el.id === playerData.roomId );
         if (room) {
             room.checkResponse(playerData.answer, socket.id);
+            callback({code:'ok', answer: playerData.answer});
             if (room.allPlayersResponded()) {
                 askQuestion(room);
             }
@@ -125,7 +126,7 @@ const askQuestion = (room) => {
         } else {
             io.to(room.id).emit('end-game', room);
         }
-    }, 5000);
+    }, 10000);
 }
 
 const startTimer = (room) => {
