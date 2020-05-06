@@ -169,3 +169,25 @@ const updateTimer = (time) => {
         timer.style.width = size + '%';
     }
 }
+
+const loadingTimer = (i, quizContainer) => {
+    let span = document.createElement('SPAN');
+
+    if (i === 8) {
+        span.classList.add('loading');
+        span.appendChild(document.createTextNode('Are you Ready ?'));
+    } else if (i === 5) {
+        quizContainer.innerHTML = '';
+        span.classList.add('loading');
+        span.appendChild(document.createTextNode('Alors on y va !'));
+    } else if (i <= 3 && i > 0) {
+        quizContainer.innerHTML = '';
+        if (i === 3) span.classList.add('loading','number', 'green');
+        if (i === 2) span.classList.add('loading','number', 'orange');
+        if (i === 1) span.classList.add('loading','number', 'red');
+        span.appendChild(document.createTextNode(i));
+    } else if (i === 0) {
+        quizContainer.removeChild(document.querySelector('.loading.number.red'));
+    }
+    quizContainer.appendChild(span);
+}
