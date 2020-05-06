@@ -69,6 +69,166 @@
                 "La Thermosphère"
             ],
             "answer": "La Stratosphère"
+        },
+        "8": {
+            "question": "Quelle reine introduisit la fourchette en France ?",
+            "options": [
+                "Marie-Antoinette",
+                "Anne Boleyn",
+                "Catherine de Médicis",
+                "Jeanne de Bourbon"
+            ],
+            "answer": "Catherine de Médicis"
+        },
+        "9": {
+            "question": "Comment s’appellent les habitations traditionnelles mongoles ?",
+            "options": [
+                "Des tentes",
+                "Des igloos",
+                "Des yourtes",
+                "Des tipis"
+            ],
+            "answer": "Des yourtes"
+        },
+        "10": {
+            "question": "Quelle est la capitale de Oman?",
+            "options": [
+                "Erevan",
+                "Belgrade",
+                "Mascate",
+                "Lima"
+            ],
+            "answer": "Mascate"
+        },
+        "11": {
+            "question": "Quel pays n’est pas un pays d’Amérique du sud?",
+            "options": [
+                "Bolivie",
+                "Nicaragua",
+                "Bangladesh",
+                "Honduras"
+            ],
+            "answer": "Bangladesh"
+        },
+        "12": {
+            "question": "Quel pays n’est pas frontalier avec le Burkina Faso?",
+            "options": [
+                "Botswana",
+                "Togo",
+                "Benin",
+                "Mali"
+            ],
+            "answer": "Botswana"
+        },
+        "13": {
+            "question": "En quelle année eut lieu le naufrage du Titanic?",
+            "options": [
+                "1913",
+                "1907",
+                "1911",
+                "1912"
+            ],
+            "answer": "1912"
+        },
+        "14": {
+            "question": "Quelle est la capitale de la Colombie?",
+            "options": [
+                "Dominique",
+                "La Havane",
+                "Bogota",
+                "San José"
+            ],
+            "answer": "Bogota"
+        },
+        "15": {
+            "question": "Quelle sœur n’existe pas dans la série Charmed?",
+            "options": [
+                "Piper",
+                "Phoebe",
+                "Paige",
+                "Pauline"
+            ],
+            "answer": "Pauline"
+        },
+        "16": {
+            "question": "Dans quel pays se situe la ville historique et légendaire de Troie?",
+            "options": [
+                "Géorgie",
+                "Syrie",
+                "Jordanie",
+                "Turquie"
+            ],
+            "answer": "Turquie"
+        },
+        "17": {
+            "question": "Quel acteur joue le fiancé de la sœur jumelle de Phoebe dans la série Friends?",
+            "options": [
+                "Sean Penn",
+                "Brad Pitt",
+                "Tom Selleck",
+                "George Clooney"
+            ],
+            "answer": "Sean Penn"
+        },
+        "18": {
+            "question": "Quelle religion interdit aux hommes de montrer leur cheveux?",
+            "options": [
+                "L’islam",
+                "Le bouddhisme",
+                "Le sikhisme",
+                "Le christianisme"
+            ],
+            "answer": "Le sikhisme"
+        },
+        "19": {
+            "question": "Quelle est la date de sortie du dessin animé Pocahontas?",
+            "options": [
+                "1987",
+                "1995",
+                "1991",
+                "1999"
+            ],
+            "answer": "1995"
+        },
+        "20": {
+            "question": "Qui est l’auteur de « Les Confessions?",
+            "options": [
+                "Jean-Jacques Rousseau",
+                "Jean Paul Sartre",
+                "Orson Welles",
+                "Charles Baudelaire"
+            ],
+            "answer": "Jean-Jacques Rousseau"
+        },
+        "21": {
+            "question": "Quel film n’a pas été réalisé par Quentin Tarantino?",
+            "options": [
+                "Once upon a time in Hollywood",
+                "Django Unchained",
+                "Taxi Driver",
+                "Reservoir Dogs"
+            ],
+            "answer": "Taxi Driver"
+        },
+        "22": {
+            "question": "Combien de saison compte la série The Big Bang Theory?",
+            "options": [
+                "12",
+                "9",
+                "15",
+                "13"
+            ],
+            "answer": "12"
+        },
+        "23": {
+            "question": "Qui a écrit « La servante écarlate?",
+            "options": [
+                "Margaret Atwood",
+                "Mary Higgins Clark",
+                "Arthur Conan Doyle",
+                "Frank Herbert"
+            ],
+            "answer": "Margaret Atwood"
         }
     }
 }
