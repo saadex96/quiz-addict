@@ -316,6 +316,31 @@ button, button:hover, button:active {
     height: 780px;
 }
 
+.loading {
+    font-size: 4rem;
+    transform: scale(1.5);
+    color: #F2CB05;
+    animation: growUp 1s ease-in-out;
+}
+
+.number {
+    font-size: 10rem;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.green {
+    color: #32A955;
+}
+
+.orange {
+    color: #F2CB05;
+}
+
+.red {
+    color: #FF3019;
+}
+
 .timer-container {
     position: relative;
     width: 90%;
@@ -708,6 +733,16 @@ button, button:hover, button:active {
     }
 }
 
+@keyframes growUp {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1.5);
+    }
+}
+
 
 @keyframes flash {
     from {
@@ -716,39 +751,5 @@ button, button:hover, button:active {
 
     to {
         background-color: #32A955;
-    }
-}
-
-@keyframes lds-ellipsis1 {
-    0% {
-        transform: scale(0);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-@keyframes lds-ellipsis3 {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(0);
-    }
-}
-@keyframes lds-ellipsis2 {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(24px, 0);
-    }
-}
-
-@keyframes lds-grid {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
     }
 }

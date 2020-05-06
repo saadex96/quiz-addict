@@ -82,6 +82,7 @@ io.on('connection', (socket) => {
         if (currentRoom) {
             callback({code: 'ok', msg: 'game-started'})
             askQuestion(currentRoom);
+            loading(currentRoom);
         } else {
             callback({code: 'error', msg: 'la room n\'existe pas'})
         }
@@ -143,6 +144,17 @@ const startTimer = (room) => {
 
 const stopTimer = () => {
     clearInterval(timer);
+}
+
+const loading = (room) => {
+    let i = 8
+    let interval = setInterval(() => {
+        io.to(room.id).emit('loading', i);
+        i--;
+        if (i === -1) {
+            clearInterval(interval);
+        }
+    }, 1000)
 }
 
 const deleteRoom = (room) => {

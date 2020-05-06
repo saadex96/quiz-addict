@@ -37,10 +37,15 @@ socket.on('players-ready', () => {
     socket.emit('start-game', roomId, (data) => {
         if (data.code === 'ok') {
             mainGame.removeChild(loader);
+
         } else {
             handleErrors(data.msg, mainGame);
         }
     });
+})
+
+socket.on('loading', (i) => {
+    loadingTimer(i, quizContainer);
 })
 
 socket.on('new-question', (question) => {

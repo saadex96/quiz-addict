@@ -27,7 +27,7 @@ class Room {
         })
         this.responseNumber = 0;
 
-        let random = Math.floor(Math.random() * 7) + 1;
+        let random = Math.floor(Math.random() * 23) + 1;
         let cQuestion = questions.quiz[random];
         this.questions.push(cQuestion);
         this.currentAnswer = cQuestion.answer;
