@@ -219,7 +219,6 @@ button, button:hover, button:active {
 /* --------------CREATE GAME------------- */
 
 .game-container {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -635,6 +634,10 @@ button, button:hover, button:active {
 
     .navbar-brand {
         margin-left: 0 !important;
+    }
+
+    .game-container {
+        height: calc(100vh - 120px);
     }
 
     .home-container .row {
