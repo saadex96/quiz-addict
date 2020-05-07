@@ -4,6 +4,9 @@ const mainGame = document.querySelector('.main-game-container');
 const playersConUl = document.querySelector('.players-container-ul');
 const loader = document.querySelector('.loader-container');
 const quizContainer = document.querySelector('.quiz-container');
+const header = document.querySelector('.header');
+const mainCont = document.querySelector('.main-container');
+const gameCont = document.querySelector('.game-container');
 
 let roomId;
 
@@ -18,10 +21,7 @@ if (formNG) {
 
         socket.emit('create-room', room,  (data) => {
             if (data.code === 'ok') {
-                formNG.style.display = 'none';
-                mainGame.style.display = 'flex';
-                titleMG.innerHTML += data.room.name;
-                roomId = data.room.id;
+                createBoardGame(formNG, mainGame, titleMG, gameCont, header, mainCont, data);
             } else {
                 handleErrors(data.msg, formNG);
             }
@@ -37,7 +37,6 @@ socket.on('players-ready', () => {
     socket.emit('start-game', roomId, (data) => {
         if (data.code === 'ok') {
             mainGame.removeChild(loader);
-
         } else {
             handleErrors(data.msg, mainGame);
         }
@@ -77,6 +76,4 @@ socket.on('end-game', (room) => {
     h3.classList.add('legend');
 
     mainGame.insertBefore(h3, mainGame.childNodes[2]);
-
-
 })

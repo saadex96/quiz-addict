@@ -131,7 +131,7 @@ const askQuestion = (room) => {
 }
 
 const startTimer = (room) => {
-    let i = 30;
+    let i = 20;
     timer = setInterval(() => {
         io.to(room.id).emit('timer', i);
         i--;

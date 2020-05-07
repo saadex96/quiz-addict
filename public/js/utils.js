@@ -4,6 +4,7 @@ const createQuestion = (question, boardGame, status) => {
 
     const questionCont = document.querySelector('.question-container');
 
+
     if (questionCont != null) {
         boardGame.removeChild(questionCont);
     }
@@ -62,6 +63,17 @@ const createQuestion = (question, boardGame, status) => {
     div.appendChild(ul);
     boardGame.appendChild(timerContainer);
     boardGame.appendChild(div);
+}
+
+const createBoardGame = (formNG, mainGame, titleMG, gameCont, header, mainCont, data) => {
+    mainGame.style.display = 'flex';
+    titleMG.innerHTML += data.room.name;
+    roomId = data.room.id;
+    gameCont.removeChild(formNG);
+    gameCont.style.padding = '0';
+    if (header) {
+        mainCont.removeChild(header);
+    }
 }
 
 const createPlayer = (player, container) => {
@@ -163,7 +175,7 @@ const updatePlayers = (players) => {
 
 const updateTimer = (time) => {
     const timer = document.querySelector('.timer');
-    let size = (30 - time) / 30 * 100;
+    let size = (20 - time) / 20 * 100;
 
     if(timer) {
         timer.style.width = size + '%';
@@ -175,17 +187,22 @@ const loadingTimer = (i, quizContainer) => {
 
     if (i === 8) {
         span.classList.add('loading');
-        span.appendChild(document.createTextNode('Are you Ready ?'));
-    } else if (i === 5) {
+        span.appendChild(document.createTextNode('Vous êtes prêts ?!'));
+    } else if (i === 6) {
         quizContainer.innerHTML = '';
         span.classList.add('loading');
-        span.appendChild(document.createTextNode('Alors on y va !'));
-    } else if (i <= 3 && i > 0) {
+        span.appendChild(document.createTextNode('C\'est parti !'));
+    } else if (i <= 4 && i > 1) {
         quizContainer.innerHTML = '';
-        if (i === 3) span.classList.add('loading','number', 'green');
-        if (i === 2) span.classList.add('loading','number', 'orange');
-        if (i === 1) span.classList.add('loading','number', 'red');
-        span.appendChild(document.createTextNode(i));
+        if (i === 4) span.classList.add('loading','number', 'green');
+        if (i === 3 ) span.classList.add('loading','number', 'orange');
+        if (i === 2) span.classList.add('loading','number', 'red');
+        let number = i - 1;
+        span.appendChild(document.createTextNode(number));
+    } else if (i === 1) {
+        quizContainer.innerHTML = '';
+        span.classList.add('loading','number', 'red');
+        span.appendChild(document.createTextNode('GO !'))
     } else if (i === 0) {
         quizContainer.removeChild(document.querySelector('.loading.number.red'));
     }
