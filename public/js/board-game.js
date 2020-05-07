@@ -4,6 +4,9 @@ const mainGame = document.querySelector('.main-game-container');
 const playersConUl = document.querySelector('.players-container-ul');
 const loader = document.querySelector('.loader-container');
 const quizContainer = document.querySelector('.quiz-container');
+const header = document.querySelector('.header');
+const mainCont = document.querySelector('.main-container');
+const gameCont = document.querySelector('.game-container');
 
 let roomId;
 
@@ -18,10 +21,7 @@ if (formNG) {
 
         socket.emit('create-room', room,  (data) => {
             if (data.code === 'ok') {
-                formNG.style.display = 'none';
-                mainGame.style.display = 'flex';
-                titleMG.innerHTML += data.room.name;
-                roomId = data.room.id;
+                createBoardGame(formNG, mainGame, titleMG, gameCont, header, mainCont, data);
             } else {
                 handleErrors(data.msg, formNG);
             }
@@ -37,7 +37,6 @@ socket.on('players-ready', () => {
     socket.emit('start-game', roomId, (data) => {
         if (data.code === 'ok') {
             mainGame.removeChild(loader);
-
         } else {
             handleErrors(data.msg, mainGame);
         }
@@ -52,6 +51,10 @@ socket.on('new-question', (question) => {
     createQuestion(question, quizContainer, false);
 })
 
+socket.on('timer', (time) => {
+    updateTimer(time);
+})
+
 socket.on('update-game', (updatedGame) => {
         setTimeout(() => {
             if (updatedGame.correctAnswer !== null) {
@@ -63,12 +66,19 @@ socket.on('update-game', (updatedGame) => {
 
 })
 
-socket.on('timer', (time) => {
-    updateTimer(time);
+socket.on('question-coming', () => {
+    quizContainer.innerHTML = '';
+
+    let span = document.createElement('SPAN');
+    span.classList.add('next-question');
+    span.appendChild(document.createTextNode('Voilà la nouvelle question !!!'))
+
+    quizContainer.appendChild(span);
+
 })
 
-socket.on('end-game', (room) => {
-    mainGame.removeChild(quizContainer);
+socket.on('end-game', () => {
+    quizContainer.innerHTML = '';
 
     let h3 = document.createElement('H3');
     let title = document.createTextNode('Partie terminée !!!');
@@ -76,7 +86,5 @@ socket.on('end-game', (room) => {
     h3.appendChild(title);
     h3.classList.add('legend');
 
-    mainGame.insertBefore(h3, mainGame.childNodes[2]);
-
-
+    quizContainer.appendChild(h3);
 })

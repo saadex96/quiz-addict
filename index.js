@@ -115,6 +115,11 @@ io.on('connection', (socket) => {
 const askQuestion = (room) => {
     stopTimer();
     io.to(room.id).emit('update-game', {players: room.players, correctAnswer: room.currentAnswer});
+    if (room.endGame != 5) {
+        setTimeout(() => {
+            io.to(room.id).emit('question-coming');
+        }, 6000)
+    }
     setTimeout(() => {
         if (room.endGame !== 0) {
         let question = room.newQuestion();
@@ -131,7 +136,7 @@ const askQuestion = (room) => {
 }
 
 const startTimer = (room) => {
-    let i = 30;
+    let i = 20;
     timer = setInterval(() => {
         io.to(room.id).emit('timer', i);
         i--;
