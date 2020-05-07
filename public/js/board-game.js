@@ -51,6 +51,10 @@ socket.on('new-question', (question) => {
     createQuestion(question, quizContainer, false);
 })
 
+socket.on('timer', (time) => {
+    updateTimer(time);
+})
+
 socket.on('update-game', (updatedGame) => {
         setTimeout(() => {
             if (updatedGame.correctAnswer !== null) {
@@ -62,8 +66,15 @@ socket.on('update-game', (updatedGame) => {
 
 })
 
-socket.on('timer', (time) => {
-    updateTimer(time);
+socket.on('question-coming', () => {
+    quizContainer.innerHTML = '';
+
+    let span = document.createElement('SPAN');
+    span.classList.add('next-question');
+    span.appendChild(document.createTextNode('Voilà la nouvelle question !!!'))
+
+    quizContainer.appendChild(span);
+
 })
 
 socket.on('end-game', () => {

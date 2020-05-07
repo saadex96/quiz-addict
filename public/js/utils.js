@@ -1,16 +1,6 @@
 const createQuestion = (question, boardGame, status) => {
 
-    const lastTimer = document.querySelector('.timer-container');
-
-    const questionCont = document.querySelector('.question-container');
-
-
-    if (questionCont != null) {
-        boardGame.removeChild(questionCont);
-    }
-    if (lastTimer != null) {
-        boardGame.removeChild(lastTimer);
-    }
+    boardGame.innerHTML = "";
 
     let timerContainer = document.createElement('DIV');
     timerContainer.classList.add('timer-container');
@@ -67,6 +57,7 @@ const createQuestion = (question, boardGame, status) => {
 
 const createBoardGame = (formNG, mainGame, titleMG, gameCont, header, mainCont, data) => {
     mainGame.style.display = 'flex';
+    mainGame.style.height = "100vh";
     titleMG.innerHTML += data.room.name;
     roomId = data.room.id;
     gameCont.removeChild(formNG);
