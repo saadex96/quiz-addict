@@ -12,6 +12,7 @@ const createQuestion = (question, boardGame, status) => {
 
     let div = document.createElement("DIV");
     div.classList.add('question-container');
+    div.appendChild(timerContainer);
 
     let h3 = document.createElement("H3");
     h3.classList.add('question');
@@ -51,7 +52,6 @@ const createQuestion = (question, boardGame, status) => {
         }
     })
     div.appendChild(ul);
-    boardGame.appendChild(timerContainer);
     boardGame.appendChild(div);
 }
 
