@@ -70,8 +70,8 @@ socket.on('question-coming', () => {
     quizContainer.innerHTML = '';
 
     let span = document.createElement('SPAN');
-    span.classList.add('next-question');
-    span.appendChild(document.createTextNode('Voilà la nouvelle question !!!'))
+    span.classList.add('next-question', 'loading');
+    span.appendChild(document.createTextNode('Attention ! Question suivante !'))
 
     quizContainer.appendChild(span);
 
