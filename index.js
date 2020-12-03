@@ -169,4 +169,4 @@ const deleteRoom = (room) => {
     io.emit('delete-room', roomId);
 }
 
-http.listen(PORT, () => console.log(`Listening on port nex ${ PORT }`))
+http.listen(PORT, () => console.log(`Listening on ${ PORT }`))
