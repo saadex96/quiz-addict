@@ -46,7 +46,9 @@ class Room {
             return false
         }
 
-        if (player.currentResponse === this.currentAnswer) {
+        if (this.players.map(el => {
+                    el.currentResponse isEqual
+                })
             player.score += 10;
             player.isRight = true;
         } else {
