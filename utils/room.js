@@ -45,12 +45,20 @@ class Room {
         } else {
             return false
         }
-
         if (player.currentResponse === this.currentAnswer) {
             player.score += 10;
             player.isRight = true;
         } else {
-            player.isRight = false;
+            let answer = this.players.findIndex(el => (el.currentResponse === player.currentResponse) && (el.name !== player.name));
+            if (answer !== -1 && player.currentResponse !== null) {
+                const samePlayers = getAllIndexes(this.players, player.currentResponse);
+                for (let index = 0; index < samePlayers.length; index++) {
+                        this.players[index].isRight = true;
+                        this.players[index].score += 10;
+                }
+            } else {
+                player.isRight = false;
+            }
         }
     }
 
@@ -59,6 +67,13 @@ class Room {
             return true;
         }
     }
+}
+function getAllIndexes(arr, currentResponse) {
+    var indexes = [], i;
+    for(i = 0; i < arr.length; i++)
+        if (arr[i].currentResponse === currentResponse)
+            indexes.push(i);
+    return indexes;
 }
 
 module.exports = {Room};
