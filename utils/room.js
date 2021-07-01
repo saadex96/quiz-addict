@@ -46,8 +46,8 @@ class Room {
             return false
         }
         if (player.currentResponse === this.currentAnswer) {
-            player.score += 10;
-            player.isRight = true;
+            player.score += 0;
+            player.isRight = false;
         } else {
             let answer = this.players.findIndex(el => (el.currentResponse === player.currentResponse) && (el.name !== player.name));
             if (answer !== -1 && player.currentResponse !== null) {
