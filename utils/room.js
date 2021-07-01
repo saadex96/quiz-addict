@@ -50,11 +50,8 @@ class Room {
             player.isRight = true;
         } else {
             let answer = this.players.findIndex(el => (el.currentResponse === player.currentResponse) && (el.name !== player.name));
-            console.log(answer);
             if (answer !== -1 && player.currentResponse !== null) {
                 const samePlayers = getAllIndexes(this.players, player.currentResponse);
-                console.log(samePlayers);
-                console.log(this.players);
                 for (let index = 0; index < samePlayers.length; index++) {
                         this.players[index].isRight = true;
                         this.players[index].score += 10;
