@@ -53,8 +53,10 @@ class Room {
             if (answer !== -1 && player.currentResponse !== null) {
                 const samePlayers = getAllIndexes(this.players, player.currentResponse);
                 for (let index = 0; index < samePlayers.length; index++) {
+                    if(this.players[index].isRight === null || this.players[index].isRight === false ) {
                         this.players[index].isRight = true;
                         this.players[index].score += 10;
+                    }
                 }
             } else {
                 player.isRight = false;
